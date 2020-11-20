@@ -2,6 +2,18 @@
     background-image: linear-gradient(to right, rgb(236, 226, 226), rgb(226, 137, 2));
 }
 
+.login {
+    background-color: black;
+    color: blanchedalmond;
+    text-align: center;
+}
+
+.filters {
+    background-color: rgb(47, 8, 70);
+    color: white;
+    text-align: center;
+}
+
 table {
     border-collapse: collapse;
     width: 100%;
@@ -14,10 +26,10 @@ td {
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2
+    background-color: #eae7ab
 }
 
 th {
     background-color: #ce8526;
-    color: white;
+    color: rgb(255, 255, 255);
 }
