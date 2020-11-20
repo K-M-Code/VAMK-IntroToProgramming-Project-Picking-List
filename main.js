@@ -7,8 +7,11 @@ function fetchOrder() {
     fetch(urlJson)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
-            printTable();
+            var table = getTableTitles();
+            for (var i = 0; i < data.length; i++) {
+                table += fillTable(data[i]);
+            }
+            document.getElementById("table_main").innerHTML = table;
         });
 
 
@@ -17,8 +20,21 @@ function fetchOrder() {
     // document.getElementById("table_main").innerHTML = tableTitles;
 }
 
-function printTable() {
-    var tableTitles = "<tr><th>Order ID</th><th>Customer ID</th><th>Customer</th><th>Order ID</th><th>Invoice address</th><th>Delivery address</th><th>Delivery date</th><th>Responsible sale person</th><th>Comment</th><th>Total price</th><th>Products</th></tr>";
-    document.getElementById("table_main").innerHTML = tableTitles;
+function fillTable(data) {
+    var tableString = "<tr>";
+    if (data != 0) {
+        for (var key in data) {
+            tableString += "<td>" + data[key] + "</td>"
+        }
+        tableString += "</tr>";
+        return tableString;
+    } else {
+        return "";
+    }
+}
+
+function getTableTitles() {
+    return "<th>Order ID</th><th>Customer ID</th><th>Customer</th><th>Invoice address</th><th>Delivery address</th><th>Delivery date</th><th>Responsible sale person</th><th>Comment</th><th>Total price</th><th>Products</th></.>";
+
 }
 fetchOrder();
