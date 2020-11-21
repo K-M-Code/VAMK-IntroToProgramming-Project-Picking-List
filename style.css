@@ -14,7 +14,7 @@
     text-align: center;
 }
 
-table {
+#table_main {
     border-collapse: collapse;
     width: 100%;
 }
@@ -32,4 +32,21 @@ tr:nth-child(even) {
 th {
     background-color: #ce8526;
     color: rgb(255, 255, 255);
+}
+
+.inner {
+    font-size: 5px;
+    text-align: left;
+}
+
+.inner th {
+    background-color: #46aa03;
+    color: rgb(255, 255, 255);
+    border: 1px solid black;
+}
+
+.inner tr {
+    background-color: #c3deb1;
+    color: rgb(17, 15, 15);
+    border: 1px solid black;
 }
