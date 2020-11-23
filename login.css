@@ -5,6 +5,18 @@
     box-sizing: border-box;
 }
 
+span {
+    width: 100%;
+    text-align: right;
+    color: red;
+}
+
+#alarm {
+    text-align: center;
+    font-size: xx-large;
+    color: rgb(71, 6, 6);
+}
+
 body,
 html {
     height: 100%;
