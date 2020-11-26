@@ -2,7 +2,7 @@ window.onload = () => {
     var users = [{
         name: "A",
         password: "1"
-    } {
+    }, {
         name: "Agent Smith",
         password: "kill neo"
     }, {
