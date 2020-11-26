@@ -1,17 +1,32 @@
-.table_content {
-    background-image: linear-gradient(to right, rgb(236, 226, 226), rgb(226, 137, 2));
+* {
+    list-style-type: none;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.login {
-    background-color: black;
-    color: blanchedalmond;
-    width: 100vw;
-    height: 100vh;
+body {
+    background-color: rgb(150, 175, 190);
+}
+
+.center {
     text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+}
+
+.titles {
+    font-size: x-large;
+    font-weight: 900;
+    color: rgb(247, 244, 238);
+}
+
+
+/* table settings */
+
+.table_content {
+    background-image: linear-gradient(to right, rgb(236, 226, 226), rgb(90, 131, 160));
+    margin: 2rem;
+}
+
+.order_list_row:hover {
+    background-color: yellow;
 }
 
 .field {
@@ -19,9 +34,17 @@
 }
 
 .filters {
-    background-color: rgb(47, 8, 70);
+    margin: 2rem;
+    background-color: rgb(69, 96, 118);
+    padding-bottom: 1rem;
+}
+
+.filters ul {
+    background-color: rgb(69, 96, 118);
     color: white;
     text-align: center;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 #table_main {
