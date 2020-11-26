@@ -13,7 +13,7 @@ window.onload = () => {
     var input = document.getElementsByTagName('input');
     var login = document.getElementById('login');
     var form = document.querySelector('form');
-    form.onsubmit = () => { return false }
+    // form.onsubmit = () => { return false }
 
     login.onclick = () => {
         if ((input[0].value != "") && (input[1].value != "")) {
@@ -26,14 +26,15 @@ window.onload = () => {
                 console.log(users[i].name == user_name);
                 if ((users[i].name == user_name) && (users[i].password == pass)) {
                     console.log('here');
-                    form.onsubmit = () => { return true }
+                    // form.onsubmit = () => { return true }
+                    newLocation();
                     break;
                 } else {
                     document.getElementById('alarm').innerHTML = "Wrong password or username!"
                     setTimeout(() => {
                         document.getElementById('alarm').innerHTML = "";
                     }, 2000);
-                    form.onsubmit = () => { return false }
+
                 }
             }
 
@@ -54,6 +55,11 @@ window.onload = () => {
 
     }
 
+
+}
+
+function newLocation() {
+    document.location.href = "landing.html";
 }
 
 // const form = document.querySelector('form')

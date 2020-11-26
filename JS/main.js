@@ -1,7 +1,7 @@
 function fetchOrder(arg) {
 
     // var urlJson = "http://www.cc.puv.fi/~e2000594/VAMK-Project-Picking-List/project.json";
-    var urlJson = "project.json";
+    var urlJson = "/project.json";
 
 
     fetch(urlJson)
