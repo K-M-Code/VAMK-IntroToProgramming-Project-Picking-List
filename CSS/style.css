@@ -54,7 +54,7 @@ body {
 
 th,
 td {
-    text-align: center;
+    text-align: left;
     padding: 8px;
 }
 
@@ -100,4 +100,8 @@ th {
     width: 90vw;
     display: flex;
     justify-content: space-evenly;
+}
+
+.drop_box {
+    display: none;
 }

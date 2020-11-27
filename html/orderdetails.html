@@ -19,6 +19,10 @@
     </div>
 
     <div class="order_details">
+        <div class="drop_box">
+            <p id="ID_Status">here</p>
+            <p id="list_of_chckboxes"></p>
+        </div>
         <div class="detail_list">
             <ul>
                 <li id="orderid">Ordet ID: </li>
@@ -33,13 +37,9 @@
             </ul>
         </div>
         <div class="order_status">
-            <label for="status">STATUS</label> <br>
-            <select name="status" id="status">
-                <option value="ordered">ORDERED</option>
-                <option value="packing">PACKING</option>
-                <option value="schipped">SCHIPPED</option>
-                <option value="delivered">DELIVERED</option>
-            </select>
+            <p>STATUS:</p>
+            <h1 id="show_status"></h1>
+
         </div>
 
     </div>
@@ -48,6 +48,9 @@
         <table id="details_table">
 
         </table>
+    </div>
+    <div id="ready_order">
+        <button type="button" onclick="buttonReady()">Ready</button>
     </div>
 </body>
 
