@@ -83,3 +83,21 @@ th {
     color: rgb(17, 15, 15);
     border: 1px solid black;
 }
+
+
+/* order details */
+
+.order_details {
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 2rem;
+    margin-right: 5rem;
+}
+
+.table_cont {
+    width: 90vw;
+    display: flex;
+    justify-content: space-evenly;
+}

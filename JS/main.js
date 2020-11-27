@@ -11,7 +11,10 @@ function fetchOrder(arg, par) {
                 tableOrdersFilters(data);
             } else if (arg == 0 && par == 1) {
                 var id = localStorage.getItem("orderid");
+                getOrderInfo(data, id);
                 printDetails(data, id);
+            } else if (arg == "status" && par == 0) {
+                sessionStorage.setItem("STATUS", 0);
             }
         });
 
@@ -29,6 +32,7 @@ function tableOrdersNoFilters(data) {
 }
 
 function tableOrdersFilters(data) {
+    var row = 0;
     var table = getTableTitles();
     var orderid = document.getElementById("orderid").value;
     var customerid = document.getElementById("customerid").value;
@@ -39,20 +43,37 @@ function tableOrdersFilters(data) {
     var customerRegex = RegExp("^" + customer);
     for (var i = 0; i < data.length; i++) {
         if (orderidRegex.test(data[i].orderid) && customeridRegex.test(data[i].customerid) && customerRegex.test(data[i].customer.toLowerCase())) {
-            table += fillTable(data[i]);
+            table += fillTable(data[i], row);
+            row++;
         }
     }
     document.getElementById("table_main").innerHTML = table;
 }
 
 function printDetails(data, id) {
-    var table = "<td><table class=\"inner\"><th>code</th><th>product</th><th>description</th><th>suppliercode</th><th>qty</th><th>unit_price</th><th>shelf_pos</th><tr>";
+    console.log(data.length);
+    for (var i = 0; i < data.length; i++) {
+        if (data[i].orderid == id) {
+            document.getElementById('orderid').innerHTML = "Order ID: " + id;
+            document.getElementById('customerid').innerHTML = "Customer ID: " + data[i].customerid;
+            document.getElementById('customer').innerHTML = "Customer name:  " + data[i].customer;
+            document.getElementById('invaddr').innerHTML = "Invoice address: " + data[i].invaddr;
+            document.getElementById('delivaddr').innerHTML = "Delivary address: " + data[i].delivaddr;
+            document.getElementById('deliverydate').innerHTML = "Delivery date: " + data[i].deliverydate;
+            document.getElementById('respsalesperson').innerHTML = "Responsible sale person: " + data[i].respsalesperson;
+            document.getElementById('totalprice').innerHTML = "Total price: " + data[i].totalprice;
+            document.getElementById('comment').innerHTML = "Comments: " + data[i].comment;
+        }
+
+    }
+    var table = "<tr><th>Packed</th><th>code</th><th>product</th><th>description</th><th>suppliercode</th><th>qty</th><th>unit_price</th><th>shelf_pos</th><tr>";
 
     for (var key in data) {
         if (data[key].orderid == id) {
             for (var i = 0; i < data[key].products.length; i++) {
                 var order = data[key].products[i];
                 // console.log(data[key].products[i]);
+                table += "<td> <input type=\"checkbox\" id=\"" + i + "\"></td>";
                 for (var val in order) {
                     table += "<td>" + order[val] + "</td>";
                 }
@@ -61,7 +82,7 @@ function printDetails(data, id) {
             // console.log(data[key]);
         }
     }
-    document.getElementById("table_main").innerHTML = table;
+    document.getElementById("details_table").innerHTML = table;
 }
 
 function fillTable(data, row) {
@@ -70,22 +91,11 @@ function fillTable(data, row) {
     var tableString = "<tr class=\"order_list_row\" id=\"" + rowId + "\" onclick=\"newLocation(this.id)\">";
     if (data != 0) {
         for (var key in data) {
-            if (Array.isArray(data[key])) {
-                tableString += "<td><table class=\"inner\"><th>code</th><th>product</th><th>description</th><th>suppliercode</th><th>qty</th><th>unit_price</th><th>shelf_pos</th><tr>";
-                for (var obj in data[key]) {
-                    for (var inner in data[key][obj]) {
-                        tableString += "<td>" + data[key][obj][inner] + "</td>";
-                    }
-                    tableString += "</tr>";
-                    // var list = JSON.parse(data[key][obj]);
-
-                    // tableString += "<li>" + data[key][obj].code + ": " + "</li>";
-                }
-                tableString += "</table></td>";
-            } else {
+            if (key == "orderid" || key == "customerid" || key == "customer" || key == "delivaddr" || key == "deliverydate") {
                 tableString += "<td>" + data[key] + "</td>";
             }
         }
+
         tableString += "</tr>";
         return tableString;
     } else {
@@ -94,7 +104,11 @@ function fillTable(data, row) {
 }
 
 function getTableTitles() {
-    return "<th>Order ID</th><th>Customer ID</th><th>Customer</th><th>Invoice address</th><th>Delivery address</th><th>Delivery date</th><th>Responsible sale person</th><th>Comment</th><th>Total price</th><th>Products</th>";
+    return "<th>Order ID</th><th>Customer ID</th><th>Customer</th><th>Delivery Address</th><th>Delivery Date</th><th>Order Status</th>";
+
+}
+
+function getOrderInfo(data, id) {
 
 }
 
@@ -103,7 +117,6 @@ function newLocation(id) {
     var orderId = document.getElementById(id).childNodes[0].innerHTML;
     localStorage.setItem("orderid", orderId);
     document.location.href = "orderdetails.html";
-    // console.log(orderId);
 
 }
 
@@ -112,5 +125,80 @@ function newLocation(id) {
 function getOrder() {
     // console.log(localStorage.getItem("orderid"));
     fetchOrder(0, 1);
+
+}
+
+
+
+
+
+
+//**LOGIN */
+function login() {
+    var users = [{
+        name: "A",
+        password: "1"
+    }, {
+        name: "Agent Smith",
+        password: "kill neo"
+    }, {
+        name: "Agent Brown",
+        password: "kill neo very hard"
+    }, {
+        name: "Agent Jones",
+        password: "want another job"
+    }];
+
+    var input = document.getElementsByTagName('input');
+    var login = document.getElementById('login');
+    var form = document.querySelector('form');
+    // form.onsubmit = () => { return false }
+
+    login.onclick = () => {
+        if ((input[0].value != "") && (input[1].value != "")) {
+            var user_name = input[0].value;
+            var pass = input[1].value;
+            for (var i = 0; i < users.length; i++) {
+                // console.log(user_name);
+                // console.log(pass);
+                // console.log(users[i].name.type);
+                console.log(users[i].name == user_name);
+                if ((users[i].name == user_name) && (users[i].password == pass)) {
+                    // form.onsubmit = () => { return true }
+                    newLocation();
+                    break;
+                } else {
+                    document.getElementById('alarm').innerHTML = "Wrong password or username!"
+                    setTimeout(() => {
+                        document.getElementById('alarm').innerHTML = "";
+                    }, 2000);
+
+                }
+            }
+
+        } else {
+            if (input[0].value == "") {
+                input[0].nextElementSibling.textContent = "Username is empty";
+                setTimeout(() => {
+                    input[0].nextElementSibling.textContent = "";
+                }, 2000);
+            }
+            if (input[1].value == "") {
+                input[1].nextElementSibling.textContent = "Password is empty";
+                setTimeout(() => {
+                    input[1].nextElementSibling.textContent = "";
+                }, 2000);
+            }
+        }
+
+    }
+
+
+
+
+    function newLocation() {
+        fetchOrder("status", 0);
+        document.location.href = "landing.html";
+    }
 
 }

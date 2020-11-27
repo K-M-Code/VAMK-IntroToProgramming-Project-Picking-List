@@ -10,6 +10,7 @@
 </head>
 
 <body onload="getOrder()">
+
     <div class="content-1">
         <h1 style="text-align: center;">HERE COMES ORDER DETAILS</h1> <br>
         <a href="/html/landing.html">HOME</a>
@@ -17,8 +18,34 @@
         <a href="/html/orders.html">Orders</a>
     </div>
 
-    <div class="table_content">
-        <table id="table_main">
+    <div class="order_details">
+        <div class="detail_list">
+            <ul>
+                <li id="orderid">Ordet ID: </li>
+                <li id="customerid">Customer ID:</li>
+                <li id="customer">Customer name:</li>
+                <li id="invaddr">Invoice address</li>
+                <li id="delivaddr">Delivery address</li>
+                <li id="deliverydate">Delivery date</li>
+                <li id="respsalesperson">Responsible sale person:</li>
+                <li id="totalprice">Total price</li>
+                <li id="comment">Comments:</li>
+            </ul>
+        </div>
+        <div class="order_status">
+            <label for="status">STATUS</label> <br>
+            <select name="status" id="status">
+                <option value="ordered">ORDERED</option>
+                <option value="packing">PACKING</option>
+                <option value="schipped">SCHIPPED</option>
+                <option value="delivered">DELIVERED</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="table_cont">
+        <table id="details_table">
 
         </table>
     </div>
