@@ -6,7 +6,8 @@ function fetchOrder(arg, par) {
         .then(res => res.json())
         .then(data => {
             if (arg == 0 && par == 0) {
-                tableOrdersNoFilters(data);
+                // tableOrdersNoFilters(data);
+                tableOrdersFilters(data);
             } else if (arg == 1 || arg == 2 || arg == 3) {
                 tableOrdersFilters(data);
             } else if (arg == 0 && par == 1) {
@@ -23,17 +24,17 @@ function fetchOrder(arg, par) {
         });
 
 }
+//**This function is not needed  */
+// function tableOrdersNoFilters(data) {
+//     var table = getTableTitles();
+//     var row = 0;
 
-function tableOrdersNoFilters(data) {
-    var table = getTableTitles();
-    var row = 0;
-
-    for (var i = 0; i < data.length; i++) {
-        table += fillTable(data[i], row);
-        row++;
-    }
-    document.getElementById("table_main").innerHTML = table;
-}
+//     for (var i = 0; i < data.length; i++) {
+//         table += fillTable(data[i], row);
+//         row++;
+//     }
+//     document.getElementById("table_main").innerHTML = table;
+// }
 
 function tableOrdersFilters(data) {
     var row = 0;
