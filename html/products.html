@@ -4,16 +4,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
+    <title>Products List</title>
     <link rel="stylesheet" href="/CSS/style.css">
 </head>
 
-<body>
-    <div class="products">
-        Table here <br>
-        <a href="/html/landing.html">HOME</a> <br>
-        <a href="/html/orders.html">Orders</a>
+<body onload="loadProducts()">
+    <div class="nav">
+        <a href="/html//landing.html">HOME</a>
     </div>
+    <div class="filters">
+        <p class="titles center"> Product Search</p>
+        <ul>
+            <li>
+                <input type="text" name="productid" id="productid" placeholder="Product ID..">
+            </li>
+            <li>
+                <input type="text" name="supplierid" id="supplierid" placeholder="Supplier ID..">
+            </li>
+            <li>
+                <input type="text" name="shelfposition" id="shelfposition" placeholder="Shelf Position..">
+            </li>
+            <li><button>Search</button></li>
+        </ul>
+    </div>
+
+    <table id="product-list">
+        <tr>
+            <th>Product ID</th>
+            <th>Supplier ID</th>
+            <th>Product Name</th>
+            <th>Unit Price</th>
+            <th>Shelf Position</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>Product Nameeee</td>
+            <td>100$</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>Product Nameeee</td>
+            <td>100$</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>Product Nameeee</td>
+            <td>100$</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>Product Nameeee</td>
+            <td>100$</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>Product Nameeee</td>
+            <td>100$</td>
+            <td>3</td>
+        </tr>
+    </table>
+    <script>
+        function loadProducts() {
+            fetch("/project.json")
+                .then(res => res.json())
+                .then(orders => {
+                    var sumArr = [];
+                    for (i = 0; i < orders.length; i++) {
+                        sumArr = orders[i].products.concat(sumArr);
+                        // console.log(orders[i].products);
+                    }
+                    console.log(sumArr);
+                    var ro = [];
+                    for (j = 0; j < sumArr.length; j++) {
+                        var isExist = false;
+                        for (k = 0; k < ro.length; k++) {
+                            if (sumArr[j].code == ro[k].code) {
+                                isExist = true; break;
+                            }
+                        }
+                        if (isExist == false) {
+                            ro.push(sumArr[j]);
+                        }
+                    }
+                    console.log(ro);
+                });
+        }
+    </script>
 </body>
 
 </html>
