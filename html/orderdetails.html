@@ -10,17 +10,51 @@
 </head>
 
 <body onload="getOrder()">
+
     <div class="content-1">
-        <h1 style="text-align: center;">HERE COMES ORDER DETAILS</h1> <br>
         <a href="/html/landing.html">HOME</a>
         <br>
         <a href="/html/orders.html">Orders</a>
+        <br>
+        <h1 style="text-align: center;">ORDER DETAILS</h1>
+
     </div>
 
-    <div class="table_content">
-        <table id="table_main">
+    <div class="order_details">
+        <div class="drop_box">
+            <p id="ID_Status">here</p>
+            <p id="list_of_chckboxes"></p>
+        </div>
+        <div class="detail_list">
+            <ul>
+                <li id="orderid">Ordet ID: </li>
+                <li id="customerid">Customer ID:</li>
+                <li id="customer">Customer name:</li>
+                <li id="invaddr">Invoice address</li>
+                <li id="delivaddr">Delivery address</li>
+                <li id="deliverydate">Delivery date</li>
+                <li id="respsalesperson">Responsible sale person:</li>
+                <li id="totalprice">Total price</li>
+                <li id="comment">Comments:</li>
+            </ul>
+        </div>
+        <div class="order_status">
+            <p>STATUS:</p>
+            <h1 id="show_status"></h1>
+
+        </div>
+
+
+    </div>
+
+    <div class="table_cont">
+        <table id="details_table">
 
         </table>
+    </div>
+    <div id="ready_order">
+        <button type="button" class="block_button" onclick="buttonReady()">Ready</button>
+        <button type="button" class="block_button print_button" onclick="buttonReady()">Print</button>
     </div>
 </body>
 

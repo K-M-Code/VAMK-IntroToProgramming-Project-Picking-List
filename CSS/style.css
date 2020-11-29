@@ -4,6 +4,8 @@
 }
 
 body {
+    margin: 0;
+    padding: 2rem;
     background-color: rgb(150, 175, 190);
 }
 
@@ -39,7 +41,14 @@ body {
     padding-bottom: 1rem;
 }
 
+ul {
+    padding: 0;
+    margin: 0;
+}
+
 .filters ul {
+    padding: 0;
+    margin: 0;
     background-color: rgb(69, 96, 118);
     color: white;
     text-align: center;
@@ -54,7 +63,7 @@ body {
 
 th,
 td {
-    text-align: center;
+    text-align: left;
     padding: 8px;
 }
 
@@ -82,4 +91,65 @@ th {
     background-color: #c3deb1;
     color: rgb(17, 15, 15);
     border: 1px solid black;
+}
+
+
+/* order details */
+
+.order_details {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.table_cont {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.drop_box {
+    display: none;
+}
+
+.block_button {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #09ec10;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.block_button:hover {
+    background-color: rgb(227, 230, 217);
+    color: black;
+}
+
+.print_button {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #5481a8;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.block_button:hover {
+    background-color: rgb(227, 230, 217);
+    color: black;
+}
+
+.details_table {
+    width: 100%;
 }
