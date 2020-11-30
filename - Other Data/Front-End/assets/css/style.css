@@ -9,14 +9,24 @@
     background-color: #F57F17;
 }
 
-/* Shadow blue */
+/* Font Primary Color */
+.tealFont {
+    color: #0CBFAE;
+}
+
+/* Font Secondary Color */
+.orangeFont {
+    color: #F57F17;
+}
+
+/* Shadow Primary */
 .tealShadow {
     -webkit-box-shadow: 0px 1px 20px 0px rgba(4,195,255,0.5);
     -moz-box-shadow: 0px 1px 20px 0px rgba(4,195,255,0.5);
     box-shadow: 0px 1px 20px 0px rgba(4,195,255,0.5);
 }
 
-/* Shadow Orange */
+/* Shadow Secondary */
 .orangeShadow {
     -webkit-box-shadow: 0px 1px 20px 0px rgba(245,127,23,0.5);
     -moz-box-shadow: 0px 1px 20px 0px rgba(245,127,23,0.5);
@@ -88,12 +98,11 @@ tbody, td, tfoot, th, thead, tr {
     text-align: center;
 }
 
-
+/* INPUT DESIGN */
 input:focus {
     outline: none;
 }
 
-/* necessary to give position: relative to parent. */
 input[type="text"] {
     color: #333;
     width: 100%;
@@ -103,3 +112,11 @@ input[type="text"] {
     padding: 7px 0; 
     border-bottom: 1px solid #F57F17;
 }
+
+/* DETAILS PAGES */
+/* Emphasize Text */
+.highlight {
+    font-weight: bold;
+    
+}
+
