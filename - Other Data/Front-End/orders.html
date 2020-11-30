@@ -22,104 +22,111 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <!-- Matrix start -->
+    <script src="/JS/main.js"></script>
+
 </head>
 
-<body>
+<body onload="fetchOrder(1)">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="assets/images/logo.svg" width="30" height="30" class="d-inline-block align-top" alt=""
-                    loading="lazy">
-                The Matrix
+    <nav class=" navbar navbar-expand-lg navbar-light bg-light ">
+
+        <div class="container ">
+            <a class="navbar-brand " href="# ">
+                <img src="assets/images/logo.svg " width="30 " height="30 " class="d-inline-block align-top " alt=" " loading="lazy "> The Matrix
             </a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#navbarSupportedContent " aria-controls="navbarSupportedContent " aria-expanded="false " aria-label="Toggle navigation ">
+                <span class="navbar-toggler-icon "></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0 ml-auto align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent ">
+                <ul class="navbar-nav mb-2 mb-lg-0 ml-auto align-items-center ">
+                    <li class="nav-item ">
+                        <a class="nav-link " href="landing.html ">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="products.html">Products</a>
+                    <li class="nav-item ">
+                        <a class="nav-link " href="products.html ">Products</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="Orders" href="#">Orders</a>
+                    <li class="nav-item ">
+                        <a class="nav-link active " aria-current="Orders " href="# ">Orders</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Support</a>
+                    <li class="nav-item ">
+                        <a class="nav-link " href="# ">Support</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                             <img src="assets/images/user-female.png" alt="" class="rounded-circle">
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                            <li><a class="dropdown-item" href="index.html">Logout</a></li>
                         </ul>
-                    </li>
                 </ul>
             </div>
-            </div>
         </div>
-        
+        </div>
+
     </nav>
 
 
 
 
-    <div class="container p-5">
+    <div class="container p-5 ">
 
-        <section id="ordersBox">
+        <section id="ordersBox ">
 
-            <div class="row">
+            <div class="row ">
                 <h3>Order Search</h3>
             </div>
 
-            <div class="row pb-2">
+            <div class="row pb-2 ">
 
-                <div class="col-sm-12 col-md-3 pt-sm-3 pt-2">
-                    <input type="text" name="" id="" placeholder="Order ID">
+                <div class="col-sm-12 col-md-3 pt-sm-3 pt-2 ">
+                    <input type="text " name=" " id="orderid" placeholder="Order ID " onkeyup="fetchOrder(1)">
                 </div>
 
-                <div class="col-sm-12 col-md-3 pt-sm-3 pt-2">
-                    <input type="text" name="" id="" placeholder="Customer ID">
-                    <span class="focus-border">
+                <div class="col-sm-12 col-md-3 pt-sm-3 pt-2 ">
+                    <input type="text " name=" " id="customerid" placeholder="Customer ID " onkeyup="fetchOrder(1)">
+                    <span class="focus-border ">
+                </div>
+                
+                <div class="col-sm-12 col-md-3 pt-sm-3 pt-2 ">
+                    <!-- refactor to delivery date filter -->
+                    <input type="text " name=" " id="customer" placeholder="Customer Name" onkeyup="fetchOrder(1)">
+                    <span class="focus-border ">
                 </div>
 
-                <div class="col-sm-12 col-md-3 pt-sm-3 pt-2">
-                    <input type="text" name="" id="" placeholder="Delivery Date">
-                    <span class="focus-border">
+                <div class="col-sm-12 col-md-3 pt-sm-3 pt-2 ">
+                    <!-- refactor to delivery date filter -->
+                    <input type="text " name=" " id="deliverydate" placeholder="Delivery Date " onkeyup="fetchOrder(1)">
+                    <span class="focus-border ">
                 </div>
 
-                <div class="col-sm-12 col-md-3 pt-sm-5 pt-md-2">
-                    <button class="btn btn-info btn-block tealColor tealShadow" type="submit">Search</button>
-                </div>
+                <!-- <div class="col-sm-12 col-md-3 pt-sm-5 pt-md-2 ">
+                    <button class="btn btn-info btn-block tealColor tealShadow " type="submit ">Search</button>
+                </div> -->
 
             </div>
 
-            <div class="row pt-5">
+            <div class="row pt-5 ">
                 
-                <div class="card my-4">
-                    <div class="card-body">
+                <div class="card my-4 ">
+                    <div class="card-body ">
                         <!--Table-->
-                        <table class="table table-hover">
+                        <table class="table table-hover " id="table_main">
                             <!--Table head-->
-                            <thead class="tealColor">
-                                <tr class="text-white">
+                            <!-- <thead class="tealColor ">
+                                <tr class="text-white ">
                                     <th>Order ID</th>
                                     <th>Customer ID</th>
                                     <th>Delivery Address</th>
                                     <th>Delivery Date</th>
                                     <th>Order Status</th>
                                 </tr>
-                            </thead>
+                            </thead> -->
                             <!--Table head-->
                             <!--Table body-->
-                            <tbody> 
+                            <!-- <tbody> 
                                 <tr>
                                     <th>515</th>
                                     <td>1234</td>
@@ -176,7 +183,7 @@
                                     <td>06-10-2020</td>
                                     <td>Ready</td>
                                 </tr>
-                            </tbody>
+                            </tbody> -->
                             <!--Table body-->
                         </table>
                         <!--Table-->
@@ -189,10 +196,10 @@
     </div>
 
 <!-- Footer -->
-<footer class="page-footer font-small tealColor fixed-bottom">
+<footer class="page-footer font-small tealColor fixed-bottom ">
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 The Matrix</div>
+    <div class="footer-copyright text-center py-3 ">© 2020 The Matrix</div>
     <!-- Copyright -->
 
 </footer>
@@ -201,7 +208,7 @@
 
 
     <!-- Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js " integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy " crossorigin="anonymous "></script>
 
 
 </body>

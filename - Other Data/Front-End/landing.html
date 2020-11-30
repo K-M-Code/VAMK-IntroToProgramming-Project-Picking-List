@@ -21,18 +21,17 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
-
+    <!-- Matrix start -->
+    <script src="/JS/main.js"></script>
 </head>
 
-<body>
+<body onload="getUserData()">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        
+
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="assets/images/logo.svg" width="30" height="30" class="d-inline-block align-top" alt=""
-                    loading="lazy">
-                The Matrix
+                <img src="assets/images/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy"> The Matrix
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +41,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0 ml-auto align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="Home" href="#">Home</a>
+                        <a class="nav-link active" aria-current="Home" href="landing.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="products.html">Products</a>
@@ -58,62 +57,62 @@
                             <img src="assets/images/user-female.png" alt="" class="rounded-circle">
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                            <li><a class="dropdown-item" href="index.html">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
-            </div>
         </div>
-        
+        </div>
+
     </nav>
 
-<div class="container p-5">
+    <div class="container p-5">
 
-    <section id="landingBox">
+        <section id="landingBox">
 
-        <div class="row">
+            <div class="row">
 
-            <div class="col-md-6 py-md-5 my-lg-5 order-md-1 order-sm-2 order-xs-2">
+                <div class="col-md-6 py-md-5 my-lg-5 order-md-1 order-sm-2 order-xs-2">
 
-                <p class="h4 mb-4">Welcome <span class="tealFont fst-italic">Morpheus</span>, to The Matrix</p>
-                <p class="h4 mb-4">Role: <span class="tealFont fst-italic">Warehouse Manager</span></p>
+                    <p class="h4 mb-4">Welcome <span class="tealFont fst-italic" id="user_name_landing">Morpheus</span>, to The Matrix</p>
+                    <p class="h4 mb-4">Role: <span class="tealFont fst-italic" id="user_role_landing">Warehouse Manager</span></p>
 
-                <div class="row py-5">
+                    <div class="row py-5">
 
-                    <div class="col-6">
-                        <a href="products.html" target="_self"><img src="assets/images/productlist.png" alt=""></a>
+                        <div class="col-6">
+                            <a href="products.html" target="_self"><img src="assets/images/productlist.png" alt=""></a>
+                        </div>
+                        <div class="col-6">
+                            <a href="orders.html" target="_self"><img src="assets/images/orderlist.png" alt=""></a>
+                        </div>
+
+
                     </div>
-                    <div class="col-6">
-                        <a href="orders.html" target="_self"><img src="assets/images/orderlist.png" alt=""></a>
-                    </div>
-
 
                 </div>
 
+                <div class="col-md-6 order-md-2 order-sm-1  order-xs-1">
+
+                    <img src="assets/images/loginpageimg.svg" alt="" class="w-100">
+
+                </div>
             </div>
 
-            <div class="col-md-6 order-md-2 order-sm-1  order-xs-1">
+        </section>
 
-                <img src="assets/images/loginpageimg.svg" alt="" class="w-100">
 
-            </div>
-        </div>
+    </div>
 
-    </section>
-    
+    <!-- Footer -->
+    <footer class="page-footer font-small tealColor fixed-bottom">
 
-</div>
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2020 The Matrix</div>
+        <!-- Copyright -->
 
-<!-- Footer -->
-<footer class="page-footer font-small tealColor fixed-bottom">
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 The Matrix</div>
-    <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
+    </footer>
+    <!-- Footer -->
 
 
 

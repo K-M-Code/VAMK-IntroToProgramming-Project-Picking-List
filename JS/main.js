@@ -5,10 +5,7 @@ function fetchOrder(arg, par) {
     fetch(urlJson)
         .then(res => res.json())
         .then(data => {
-            if (arg == 0 && par == 0) {
-                // tableOrdersNoFilters(data);
-                tableOrdersFilters(data);
-            } else if (arg == 1 || arg == 2 || arg == 3) {
+            if (arg == 1) {
                 tableOrdersFilters(data);
             } else if (arg == 0 && par == 1) {
                 var id = localStorage.getItem("orderid");
@@ -42,12 +39,14 @@ function tableOrdersFilters(data) {
     var orderid = document.getElementById("orderid").value;
     var customerid = document.getElementById("customerid").value;
     var customer = document.getElementById("customer").value.toLowerCase();
+    var deliveryDate = document.getElementById("deliverydate").value;
 
     var orderidRegex = RegExp("^" + orderid);
     var customeridRegex = RegExp("^" + customerid);
     var customerRegex = RegExp("^" + customer);
+    var deliveryDateRegex = RegExp("^" + deliveryDate);
     for (var i = 0; i < data.length; i++) {
-        if (orderidRegex.test(data[i].orderid) && customeridRegex.test(data[i].customerid) && customerRegex.test(data[i].customer.toLowerCase())) {
+        if (orderidRegex.test(data[i].orderid) && customeridRegex.test(data[i].customerid) && customerRegex.test(data[i].customer.toLowerCase()) && deliveryDateRegex.test(data[i].deliverydate)) { //fix here deliverydate ids
             table += fillTable(data[i], row);
             row++;
         }
@@ -57,7 +56,7 @@ function tableOrdersFilters(data) {
 
 function printDetails(data, id) {
 
-    var table = "<tr><th>Packed</th><th>code</th><th>product</th><th>description</th><th>suppliercode</th><th>qty</th><th>unit_price</th><th>shelf_pos</th><tr>";
+    var table = "<thead class=\"tealColor\"><tr class=\"text-white\"><th>Packed</th><th>Code</th><th>Product</th><th>Description</th><th>Supplier Code</th><th>Quantity</th><th>Unit Price</th><th>Shelf Position</th><tr></thead>";
 
     for (var key in data) {
         if (data[key].orderid == id) {
@@ -91,26 +90,27 @@ function fillTable(data, row) {
 
 /**This function creates headers for main order table */
 function getTableTitles() {
-    return "<th>Order ID</th><th>Customer ID</th><th>Customer</th><th>Delivery Address</th><th>Delivery Date</th><th>Order Status</th>";
+    return "<thead class=\"tealColor\"><tr class=\"text-white\"><th>Order ID</th><th>Customer ID</th><th>Customer</th><th>Delivery Address</th><th>Delivery Date</th><th>Order Status</th></tr></thead>";
 
 }
 
 function getOrderInfo(data, id) {
     var checkboxes = "";
     document.getElementById("ID_Status").innerHTML = id;
-    document.getElementById("show_status").innerHTML = sessionStorage.getItem(id);
+    // document.getElementById("show_status").innerHTML = sessionStorage.getItem(id);
     console.log(sessionStorage.getItem(id));
     for (var i = 0; i < data.length; i++) {
         if (data[i].orderid == id) {
-            document.getElementById('orderid').innerHTML = "Order ID: " + id;
-            document.getElementById('customerid').innerHTML = "Customer ID: " + data[i].customerid;
-            document.getElementById('customer').innerHTML = "Customer name:  " + data[i].customer;
-            document.getElementById('invaddr').innerHTML = "Invoice address: " + data[i].invaddr;
-            document.getElementById('delivaddr').innerHTML = "Delivary address: " + data[i].delivaddr;
-            document.getElementById('deliverydate').innerHTML = "Delivery date: " + data[i].deliverydate;
-            document.getElementById('respsalesperson').innerHTML = "Responsible sale person: " + data[i].respsalesperson;
-            document.getElementById('totalprice').innerHTML = "Total price: " + data[i].totalprice;
-            document.getElementById('comment').innerHTML = "Comments: " + data[i].comment;
+            document.getElementById('orderid').innerHTML = id;
+            document.getElementById('customerid').innerHTML = data[i].customerid;
+            document.getElementById('customer').innerHTML = data[i].customer;
+            document.getElementById('invaddr').innerHTML = data[i].invaddr;
+            document.getElementById('delivaddr').innerHTML = data[i].delivaddr;
+            document.getElementById('deliverydate').innerHTML = data[i].deliverydate;
+            document.getElementById('respsalesperson').innerHTML = data[i].respsalesperson;
+            document.getElementById('totalprice').innerHTML = data[i].totalprice;
+            document.getElementById('comment').innerHTML = data[i].comment;
+            document.getElementById('show_status').innerHTML = sessionStorage.getItem(id);
             for (var j = 0; j < data[i].products.length; j++) {
                 if (j < data[i].products.length - 1) {
                     checkboxes += "packed" + j + "_" + id + ",";
@@ -156,17 +156,21 @@ function getOrder() {
 function login() {
     fetchOrder("status");
     var users = [{
-        name: "A",
-        password: "1"
+        name: "John Doe",
+        password: "matrix",
+        role: "Wherehouse junior manager"
     }, {
         name: "Agent Smith",
-        password: "kill neo"
+        password: "kill neo",
+        role: "Havy duty"
     }, {
         name: "Agent Brown",
-        password: "kill neo very hard"
+        password: "kill neo very hard",
+        role: "Coffe maker"
     }, {
         name: "Agent Jones",
-        password: "want another job"
+        password: "want another job",
+        role: "Light duty"
     }];
 
     var input = document.getElementsByTagName('input');
@@ -182,6 +186,8 @@ function login() {
                 console.log(users[i].name == user_name);
                 if ((users[i].name == user_name) && (users[i].password == pass)) {
                     // form.onsubmit = () => { return true }
+                    sessionStorage.setItem("username", user_name);
+                    sessionStorage.setItem("role", users[i].role);
                     newLocation();
                     break;
                 } else {
@@ -216,6 +222,13 @@ function login() {
     }
 
 
+}
+//**Function for setting User name and user role on landing page */
+function getUserData() {
+    var username = sessionStorage.getItem("username");
+    var role = sessionStorage.getItem("role");
+    document.getElementById("user_name_landing").innerHTML = username;
+    document.getElementById("user_role_landing").innerHTML = role;
 }
 
 function checkStatus(id) {
