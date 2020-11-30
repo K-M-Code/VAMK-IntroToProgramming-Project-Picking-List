@@ -70,6 +70,26 @@
     background-color: rgba(9, 190, 173,0.75) !important;
 }
 
+#ordersDetailsBox button {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px !important;
+}
+
+#ordersDetailsBox button:hover {
+    background-color: rgba(9, 190, 173,0.75) !important;
+}
+
+#productDetailsBox button {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px !important;
+}
+
+#productDetailsBox button:hover {
+    background-color: rgba(9, 190, 173,0.75) !important;
+}
+
 
 
 
@@ -113,10 +133,26 @@ input[type="text"] {
     border-bottom: 1px solid #F57F17;
 }
 
-/* DETAILS PAGES */
+/* ORDER DETAILS PAGES */
 /* Emphasize Text */
 .highlight {
     font-weight: bold;
-    
 }
 
+.content {
+    font-weight: normal;
+}
+
+input[type="text-area"] {
+    width: 100%;
+    height: 50px;
+    height: 50px;
+    text-align: center;
+    font-weight: normal;
+    border: 1px solid #F57F17;
+}
+
+/* PRODUCT DETAILS PAGES */
+#productDetailsBox img {
+    width: 100%;
+}
