@@ -1,0 +1,105 @@
+/* PRIMARY EFFECTS */
+/* Primary Color */
+.tealColor {
+    background-color: #0CBFAE;
+}
+
+/* Secondary Color */
+.orangeColor {
+    background-color: #F57F17;
+}
+
+/* Shadow blue */
+.tealShadow {
+    -webkit-box-shadow: 0px 1px 20px 0px rgba(4,195,255,0.5);
+    -moz-box-shadow: 0px 1px 20px 0px rgba(4,195,255,0.5);
+    box-shadow: 0px 1px 20px 0px rgba(4,195,255,0.5);
+}
+
+/* Shadow Orange */
+.orangeShadow {
+    -webkit-box-shadow: 0px 1px 20px 0px rgba(245,127,23,0.5);
+    -moz-box-shadow: 0px 1px 20px 0px rgba(245,127,23,0.5);
+    box-shadow: 0px 1px 20px 0px rgba(245,127,23,0.5);
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+
+/* ELEMENT EFFECTS */
+
+#loginBox button {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px !important;
+}
+
+#loginBox button:hover {
+    background-color: rgba(9, 190, 173,0.75) !important;
+}
+
+#productsBox button {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px !important;
+}
+
+#productsBox button:hover {
+    background-color: rgba(9, 190, 173,0.75) !important;
+}
+
+#ordersBox button {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px !important;
+}
+
+#ordersBox button:hover {
+    background-color: rgba(9, 190, 173,0.75) !important;
+}
+
+
+
+
+/* SECTION EFFECTS */
+/* Navbar Styling */
+.navbar {
+    -webkit-box-shadow: 0px 1px 20px 0px rgba(4,195,255,0.3);
+    -moz-box-shadow: 0px 1px 20px 0px rgba(4,195,255,0.3);
+    box-shadow: 0px 1px 20px 0px rgba(4,195,255,0.3);
+}
+
+.navbar-nav li a {
+    color: #2e2e2e !important;
+}
+
+.navbar-nav li .active{
+    color: #0CBFAE !important;
+}
+
+.navbar-brand img{
+    padding-right: 5px;
+}
+
+/* TABLE DESIGN */
+tbody, td, tfoot, th, thead, tr {
+    text-align: center;
+}
+
+
+input:focus {
+    outline: none;
+}
+
+/* necessary to give position: relative to parent. */
+input[type="text"] {
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    border: 0;
+    padding: 7px 0; 
+    border-bottom: 1px solid #F57F17;
+}
