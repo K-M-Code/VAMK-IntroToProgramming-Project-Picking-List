@@ -90,6 +90,16 @@
     background-color: rgba(9, 190, 173,0.75) !important;
 }
 
+#landingBox button {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px !important;
+}
+
+#landingBox button:hover {
+    background-color: rgba(9, 190, 173,0.75) !important;
+}
+
 
 
 
@@ -111,6 +121,10 @@
 
 .navbar-brand img{
     padding-right: 5px;
+}
+
+.navbar a img{
+    width: 55px;
 }
 
 /* TABLE DESIGN */
@@ -155,4 +169,9 @@ input[type="text-area"] {
 /* PRODUCT DETAILS PAGES */
 #productDetailsBox img {
     width: 100%;
+}
+
+/* LANDING PAGES */
+#landingBox img {
+    height: 65%;
 }
