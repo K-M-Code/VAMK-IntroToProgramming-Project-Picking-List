@@ -116,7 +116,8 @@ function printOrderDetailsTable(data, id) {
 function getOrderInfo(data, id) {
     var checkboxes = "";
     document.getElementById("ID_Status").innerHTML = id;
-    console.log(sessionStorage.getItem(id));
+    var comment = sessionStorage.getItem("comment" + id);
+    console.log(comment);
     for (var i = 0; i < data.length; i++) {
         if (data[i].orderid == id) {
             document.getElementById('orderid').innerHTML = id;
@@ -128,6 +129,7 @@ function getOrderInfo(data, id) {
             document.getElementById('respsalesperson').innerHTML = data[i].respsalesperson;
             document.getElementById('totalprice').innerHTML = data[i].totalprice;
             document.getElementById('comment').innerHTML = data[i].comment;
+            document.getElementById('packing_comment').innerHTML = comment;
             document.getElementById('show_status').innerHTML = sessionStorage.getItem(id);
             for (var j = 0; j < data[i].products.length; j++) {
                 if (j < data[i].products.length - 1) {
@@ -306,6 +308,7 @@ function showCheckBox() {
 function buttonReady() {
     var id = document.getElementById("ID_Status").innerHTML;
     var list_of_chckboxes = document.getElementById('list_of_chckboxes').innerHTML;
+    var comment = document.getElementById('coment_area').value;
     var arr = list_of_chckboxes.split(",");
     var counter = 0;
     for (var i = 0; i < arr.length; i++) {
@@ -315,6 +318,7 @@ function buttonReady() {
         }
     }
     if (counter == arr.length) {
+
         document.getElementById("show_status").innerHTML = "READY";
         sessionStorage.setItem(id, "READY");
 
@@ -323,6 +327,10 @@ function buttonReady() {
         // document.getElementById("show_status").innerHTML = "NOT READY";
         // sessionStorage.setItem(id, "NOT READY");
     }
+
+    sessionStorage.setItem("comment" + id, comment)
+    document.getElementById('packing_comment').innerHTML = comment;
+
     console.log("Status for " + arr[i] + ": " + sessionStorage.getItem(arr[i]));
 
 }
@@ -387,7 +395,6 @@ function loadProducts() {
             generateTable(uniqueProducts);
         });
 }
-
 
 function filterProducts() {
     fetch("/project.json")
