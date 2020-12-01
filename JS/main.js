@@ -326,59 +326,82 @@ function buttonReady() {
     console.log("Status for " + arr[i] + ": " + sessionStorage.getItem(arr[i]));
 
 }
+
 //** Product-list page */
+function getUniqueProductsFromJson(orders) {
+    var sumArr = [];
+    for (i = 0; i < orders.length; i++) {
+        sumArr = orders[i].products.concat(sumArr);
+    }
+
+    var result = [];
+    for (j = 0; j < sumArr.length; j++) {
+        var isExist = false;
+        for (k = 0; k < result.length; k++) {
+            if (sumArr[j].code == result[k].code) {
+                isExist = true; break;
+            }
+        }
+        if (isExist == false) {
+            result.push(sumArr[j]);
+        }
+    }
+    return result;
+}
+
+function generateTable(productList) {
+    var table = document.getElementById("product-list");
+    var tableHeader = table.children[0].children[0];
+    
+    var tbody = table.children[0];
+    tbody.innerHTML = "";
+    tbody.appendChild(tableHeader);
+
+    for (k = 0; k < productList.length; k++) {
+        var newRow2 = document.createElement("tr");
+        var newCol6 = document.createElement("td");
+        newCol6.innerHTML = productList[k].code;
+        var newCol7 = document.createElement("td");
+        newCol7.innerHTML = productList[k].suppliercode;
+        var newCol8 = document.createElement("td");
+        newCol8.innerHTML = productList[k].product;
+        var newCol9 = document.createElement("td");
+        newCol9.innerHTML = productList[k].unit_price;
+        var newCol10 = document.createElement("td");
+        newCol10.innerHTML = productList[k].shelf_pos;
+        newRow2.appendChild(newCol6);
+        newRow2.appendChild(newCol7);
+        newRow2.appendChild(newCol8);
+        newRow2.appendChild(newCol9);
+        newRow2.appendChild(newCol10);
+        var tbody = table.getElementsByTagName("tbody")[0];
+        tbody.appendChild(newRow2);
+    }
+}
+
 function loadProducts() {
     fetch("/project.json")
         .then(res => res.json())
         .then(orders => {
-            var sumArr = [];
-            var table = document.getElementById("product-list");
-            for (i = 0; i < orders.length; i++) {
-                sumArr = orders[i].products.concat(sumArr);
-                // console.log(orders[i].products);
-            }
-            console.log(sumArr);
-            var ro = [];
-            for (j = 0; j < sumArr.length; j++) {
-                var isExist = false;
-                for (k = 0; k < ro.length; k++) {
-                    if (sumArr[j].code == ro[k].code) {
-                        isExist = true; break;
-                    }
-                }
-                if (isExist == false) {
-                    ro.push(sumArr[j]);
-                }
-                
-  
-
-            }
-        
-            for (k=0; k < ro.length; k++ ){
-                
-
-                
-  var newRow2= document.createElement("tr");
-  var newCol6= document.createElement("td");
-newCol6.innerHTML = ro[k].code;
-var newCol7= document.createElement("td");
-newCol7.innerHTML = ro[k].suppliercode;
-var newCol8= document.createElement("td");
-newCol8.innerHTML = ro[k].product;
-var newCol9= document.createElement("td");
-newCol9.innerHTML = ro[k].unit_price;
-var newCol10= document.createElement("td");
-newCol10.innerHTML = ro[k].shelf_pos;
-newRow2.appendChild(newCol6);
-newRow2.appendChild(newCol7);
-newRow2.appendChild(newCol8);
-newRow2.appendChild(newCol9);
-newRow2.appendChild(newCol10);
-
-
-    table.appendChild(newRow2);
-
-            }
-            
+            var uniqueProducts = getUniqueProductsFromJson(orders);
+            generateTable(uniqueProducts);
         });
+}
+
+
+function filterProducts() {
+    fetch("/project.json")
+        .then(res => res.json())
+        .then(orders => {
+            var uniqueProducts = getUniqueProductsFromJson(orders);
+            var productIdValue = document.getElementById("product-id").value;
+
+            var filteredProducts =[];
+            for(i=0; i< uniqueProducts.length; i++){
+                if(uniqueProducts[i].code.includes(productIdValue)){
+                    filteredProducts.push(uniqueProducts[i]);
+                }
+            }
+            generateTable(filteredProducts);
+        })
 }
