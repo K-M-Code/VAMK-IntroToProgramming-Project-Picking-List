@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products List</title>
     <link rel="stylesheet" href="/CSS/style.css">
+    <script src="/JS/main.js"></script>
+
 </head>
 
 <body onload="loadProducts()">
@@ -36,69 +38,8 @@
             <th>Unit Price</th>
             <th>Shelf Position</th>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>Product Nameeee</td>
-            <td>100$</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>Product Nameeee</td>
-            <td>100$</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>Product Nameeee</td>
-            <td>100$</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>Product Nameeee</td>
-            <td>100$</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>Product Nameeee</td>
-            <td>100$</td>
-            <td>3</td>
-        </tr>
-    </table>
-    <script>
-        function loadProducts() {
-            fetch("/project.json")
-                .then(res => res.json())
-                .then(orders => {
-                    var sumArr = [];
-                    for (i = 0; i < orders.length; i++) {
-                        sumArr = orders[i].products.concat(sumArr);
-                        // console.log(orders[i].products);
-                    }
-                    console.log(sumArr);
-                    var ro = [];
-                    for (j = 0; j < sumArr.length; j++) {
-                        var isExist = false;
-                        for (k = 0; k < ro.length; k++) {
-                            if (sumArr[j].code == ro[k].code) {
-                                isExist = true; break;
-                            }
-                        }
-                        if (isExist == false) {
-                            ro.push(sumArr[j]);
-                        }
-                    }
-                    console.log(ro);
-                });
-        }
-    </script>
+        </table>
+    
 </body>
 
 </html>
