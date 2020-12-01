@@ -26,3 +26,4 @@
 - Design Logo Anim if Time Permits
 - Fix CSS Bugs 
 - Table Hover Pointer CSS
+- Next Week Start on Script for Presentation
