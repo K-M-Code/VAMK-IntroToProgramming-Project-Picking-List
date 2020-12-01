@@ -1,53 +1,51 @@
-//***Function to get a JSON file with orders */
-function fetchOrder(arg, par) {
+/**
+ * Main function to retrive data from JSON file
+ * @param {string} arg 
+ * arg = main: prints main table and filters are available
+ * arg = details: prints order detail table to orderdetails.html
+ * arg = status: creates database at sessionStorage for product ID using formula (packed+i+_+ordrid) and status for each order ID using ORDER ID: NOT READY
+ */
+function fetchOrder(arg) {
     var urlJson = "/project.json";
-
     fetch(urlJson)
         .then(res => res.json())
         .then(data => {
-            if (arg == 0 && par == 0) {
-                // tableOrdersNoFilters(data);
-                tableOrdersFilters(data);
-            } else if (arg == 1 || arg == 2 || arg == 3) {
-                tableOrdersFilters(data);
-            } else if (arg == 0 && par == 1) {
+            if (arg == 'main') {
+                console.log(typeof(data));
+                printMainTableOrdersFilters(data);
+            } else if (arg == 'details') {
                 var id = localStorage.getItem("orderid");
                 getOrderInfo(data, id);
-                printDetails(data, id);
+                printOrderDetailsTable(data, id);
                 showCheckBox(data, id);
-                // checkStatus();
-
             } else if (arg == "status") {
                 getStatus(data);
-                // sessionStorage.setItem("STATUS", 15);
             }
         });
 
 }
-//**This function is not needed  */
-// function tableOrdersNoFilters(data) {
-//     var table = getTableTitles();
-//     var row = 0;
 
-//     for (var i = 0; i < data.length; i++) {
-//         table += fillTable(data[i], row);
-//         row++;
-//     }
-//     document.getElementById("table_main").innerHTML = table;
-// }
-
-function tableOrdersFilters(data) {
+/**
+ * 
+ * @param {object} data 
+ * Function to create a main table of orders using data from JSON file
+ * data = array af objects
+ * In this function filter logic is based on RegEx.
+ */
+function printMainTableOrdersFilters(data) {
     var row = 0;
     var table = getTableTitles();
     var orderid = document.getElementById("orderid").value;
     var customerid = document.getElementById("customerid").value;
     var customer = document.getElementById("customer").value.toLowerCase();
+    var deliveryDate = document.getElementById("deliverydate").value;
 
     var orderidRegex = RegExp("^" + orderid);
     var customeridRegex = RegExp("^" + customerid);
     var customerRegex = RegExp("^" + customer);
+    var deliveryDateRegex = RegExp("^" + deliveryDate);
     for (var i = 0; i < data.length; i++) {
-        if (orderidRegex.test(data[i].orderid) && customeridRegex.test(data[i].customerid) && customerRegex.test(data[i].customer.toLowerCase())) {
+        if (orderidRegex.test(data[i].orderid) && customeridRegex.test(data[i].customerid) && customerRegex.test(data[i].customer.toLowerCase()) && deliveryDateRegex.test(data[i].deliverydate)) {
             table += fillTable(data[i], row);
             row++;
         }
@@ -55,9 +53,45 @@ function tableOrdersFilters(data) {
     document.getElementById("table_main").innerHTML = table;
 }
 
-function printDetails(data, id) {
+/**
+ * Creates content of orders table
+ * @param {object} data 
+ * @param {number} row 
+ */
+function fillTable(data, row) {
 
-    var table = "<tr><th>Packed</th><th>code</th><th>product</th><th>description</th><th>suppliercode</th><th>qty</th><th>unit_price</th><th>shelf_pos</th><tr>";
+
+    var rowId = "row" + row;
+    var tableString = "<tr class=\"order_list_row\" id=\"" + rowId + "\" onclick=\"newLocation(this.id)\">";
+    tableString += "<td>" + data.orderid + "</td>";
+    tableString += "<td>" + data.customerid + "</td>";
+    tableString += "<td>" + data.customer + "</td>";
+    tableString += "<td>" + data.delivaddr + "</td>";
+    tableString += "<td>" + data.deliverydate + "</td>";
+    tableString += "<td>" + sessionStorage.getItem(data.orderid) + "</td>";
+    tableString += "</tr>";
+    return tableString;
+}
+
+/**
+ * Creates titles for main orders table
+ */
+function getTableTitles() {
+    return "<thead class=\"tealColor\"><tr class=\"text-white\"><th>Order ID</th><th>Customer ID</th><th>Customer</th><th>Delivery Address</th><th>Delivery Date</th><th>Order Status</th></tr></thead>";
+
+}
+
+
+
+/**
+ * Prints order details table and creates checkboxes to pick a product
+ * Sets personal id to each product which is match with session storage ID 
+ * @param {object} data 
+ * @param {number} id 
+ */
+function printOrderDetailsTable(data, id) {
+
+    var table = "<thead class=\"tealColor\"><tr class=\"text-white\"><th>Packed</th><th>Code</th><th>Product</th><th>Description</th><th>Supplier Code</th><th>Quantity</th><th>Unit Price</th><th>Shelf Position</th><tr></thead>";
 
     for (var key in data) {
         if (data[key].orderid == id) {
@@ -74,43 +108,27 @@ function printDetails(data, id) {
     document.getElementById("details_table").innerHTML = table;
 }
 
-function fillTable(data, row) {
-
-
-    var rowId = "row" + row;
-    var tableString = "<tr class=\"order_list_row\" id=\"" + rowId + "\" onclick=\"newLocation(this.id)\">";
-    tableString += "<td>" + data.orderid + "</td>";
-    tableString += "<td>" + data.customerid + "</td>";
-    tableString += "<td>" + data.customer + "</td>";
-    tableString += "<td>" + data.delivaddr + "</td>";
-    tableString += "<td>" + data.deliverydate + "</td>";
-    tableString += "<td>" + sessionStorage.getItem(data.orderid) + "</td>";
-    tableString += "</tr>";
-    return tableString;
-}
-
-/**This function creates headers for main order table */
-function getTableTitles() {
-    return "<th>Order ID</th><th>Customer ID</th><th>Customer</th><th>Delivery Address</th><th>Delivery Date</th><th>Order Status</th>";
-
-}
-
+/**
+ * Shows details about order and creates array of product ids of the order to perform comparation with datatbase at sessionStorage  
+ * @param {object} data 
+ * @param {number} id 
+ */
 function getOrderInfo(data, id) {
     var checkboxes = "";
     document.getElementById("ID_Status").innerHTML = id;
-    document.getElementById("show_status").innerHTML = sessionStorage.getItem(id);
     console.log(sessionStorage.getItem(id));
     for (var i = 0; i < data.length; i++) {
         if (data[i].orderid == id) {
-            document.getElementById('orderid').innerHTML = "Order ID: " + id;
-            document.getElementById('customerid').innerHTML = "Customer ID: " + data[i].customerid;
-            document.getElementById('customer').innerHTML = "Customer name:  " + data[i].customer;
-            document.getElementById('invaddr').innerHTML = "Invoice address: " + data[i].invaddr;
-            document.getElementById('delivaddr').innerHTML = "Delivary address: " + data[i].delivaddr;
-            document.getElementById('deliverydate').innerHTML = "Delivery date: " + data[i].deliverydate;
-            document.getElementById('respsalesperson').innerHTML = "Responsible sale person: " + data[i].respsalesperson;
-            document.getElementById('totalprice').innerHTML = "Total price: " + data[i].totalprice;
-            document.getElementById('comment').innerHTML = "Comments: " + data[i].comment;
+            document.getElementById('orderid').innerHTML = id;
+            document.getElementById('customerid').innerHTML = data[i].customerid;
+            document.getElementById('customer').innerHTML = data[i].customer;
+            document.getElementById('invaddr').innerHTML = data[i].invaddr;
+            document.getElementById('delivaddr').innerHTML = data[i].delivaddr;
+            document.getElementById('deliverydate').innerHTML = data[i].deliverydate;
+            document.getElementById('respsalesperson').innerHTML = data[i].respsalesperson;
+            document.getElementById('totalprice').innerHTML = data[i].totalprice;
+            document.getElementById('comment').innerHTML = data[i].comment;
+            document.getElementById('show_status').innerHTML = sessionStorage.getItem(id);
             for (var j = 0; j < data[i].products.length; j++) {
                 if (j < data[i].products.length - 1) {
                     checkboxes += "packed" + j + "_" + id + ",";
@@ -124,19 +142,29 @@ function getOrderInfo(data, id) {
     }
 }
 
+/**
+ * Creates DATABASE at sessionStorage 
+ * Order ID: NOT READY
+ * Product ID ("packed" + j + "_" + data[i].orderid) , 0
+ * This function performs right away after LOGIN
+ * @param {object} data 
+ */
 function getStatus(data) {
-    // console.log(data);
     for (var i = 0; i < data.length; i++) {
         sessionStorage.setItem(data[i].orderid, "NOT READY");
         console.log(data[i].products.length);
         for (var j = 0; j < data[i].products.length; j++) {
-            console.log("here");
             sessionStorage.setItem("packed" + j + "_" + data[i].orderid, 0);
         }
     }
 
 }
-//** Function get the orderid from the clicked row and save it on the local storage */
+
+
+/**
+ * Function get the orderid from the clicked row from MAIN ORDER TABLE and save it on the local storage 
+ * @param {string} id 
+ */
 function newLocation(id) {
     var orderId = document.getElementById(id).childNodes[0].innerHTML;
     localStorage.setItem("orderid", orderId);
@@ -144,35 +172,34 @@ function newLocation(id) {
 
 }
 
-
-//** Functions for ORDERDETAILS (orderdetails.html) */
-function getOrder() {
-    // console.log(localStorage.getItem("orderid"));
-    fetchOrder(0, 1);
-
-}
-
-//**LOGIN */
+/**
+ * Login function
+ * This function is calling another functions inside such us:
+ * fetchOrder("status") - to create status database at sessionStorage
+ * And it perform login function using array of users with passwords
+ */
 function login() {
     fetchOrder("status");
     var users = [{
-        name: "A",
-        password: "1"
+        name: "John Doe",
+        password: "matrix",
+        role: "Wherehouse junior manager"
     }, {
         name: "Agent Smith",
-        password: "kill neo"
+        password: "kill neo",
+        role: "Havy duty"
     }, {
         name: "Agent Brown",
-        password: "kill neo very hard"
+        password: "kill neo very hard",
+        role: "Coffe maker"
     }, {
         name: "Agent Jones",
-        password: "want another job"
+        password: "want another job",
+        role: "Light duty"
     }];
 
     var input = document.getElementsByTagName('input');
     var login = document.getElementById('login');
-    var form = document.querySelector('form');
-    // form.onsubmit = () => { return false }
 
     login.onclick = () => {
         if ((input[0].value != "") && (input[1].value != "")) {
@@ -181,8 +208,9 @@ function login() {
             for (var i = 0; i < users.length; i++) {
                 console.log(users[i].name == user_name);
                 if ((users[i].name == user_name) && (users[i].password == pass)) {
-                    // form.onsubmit = () => { return true }
-                    newLocation();
+                    sessionStorage.setItem("username", user_name);
+                    sessionStorage.setItem("role", users[i].role);
+                    document.location.href = "landing.html";
                     break;
                 } else {
                     document.getElementById('alarm').innerHTML = "Wrong password or username!"
@@ -209,18 +237,28 @@ function login() {
         }
 
     }
-
-
-    function newLocation() {
-        document.location.href = "landing.html";
-    }
-
-
 }
 
+
+
+/**
+ * Function for setting User name and user role on landing page
+ */
+function getUserData() {
+    var username = sessionStorage.getItem("username");
+    var role = sessionStorage.getItem("role");
+    document.getElementById("user_name_landing").innerHTML = username;
+    document.getElementById("user_role_landing").innerHTML = role;
+}
+
+/**
+ * Function to check checkboxes if it where already selected during one session
+ * and it will change a status of product( 1 - packed, 0 - not packed)
+ * @param {number} id 
+ */
 function checkStatus(id) {
     var checkBox = document.getElementById(id);
-    var orderid = document.getElementById("ID_Status").innerHTML;
+
 
     if (checkBox.checked) {
         sessionStorage.setItem(id, 1);
@@ -232,6 +270,10 @@ function checkStatus(id) {
 
 }
 
+
+/**
+ * Check if the checkbox was already selected (checked)
+ */
 function showCheckBox() {
     var id = document.getElementById("ID_Status").innerHTML;
     var list_of_chckboxes = document.getElementById('list_of_chckboxes').innerHTML;
@@ -257,6 +299,10 @@ function showCheckBox() {
 
 }
 
+
+/**
+ * Change the status of ORDER if all products where packed
+ */
 function buttonReady() {
     var id = document.getElementById("ID_Status").innerHTML;
     var list_of_chckboxes = document.getElementById('list_of_chckboxes').innerHTML;
