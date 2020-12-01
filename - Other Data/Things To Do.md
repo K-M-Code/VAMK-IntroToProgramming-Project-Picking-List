@@ -17,3 +17,12 @@
 ## Kunal
     - Do Framework by Saturday
     - Do Styling By Monday
+
+
+01-12-2020
+
+## Kunal
+- Design Logo
+- Design Logo Anim if Time Permits
+- Fix CSS Bugs 
+- Table Hover Pointer CSS
