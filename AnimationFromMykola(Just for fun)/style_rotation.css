@@ -1,0 +1,172 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+span {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(6, 3, 15)
+}
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#symbols {
+    /* border: 1px solid green; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    /* justify-content: space-evenly; */
+}
+
+#symbols2 {
+    position: absolute;
+    top: 20;
+    left: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#symbols3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#symbols4 {
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#m1 {
+    color: rgb(18, 201, 18);
+    animation: matrix linear 2s infinite;
+}
+
+#m2 {
+    color: rgb(18, 201, 18);
+    animation: matrix linear 3s infinite;
+}
+
+#m3 {
+    color: rgb(18, 201, 18);
+    animation: matrix linear 4s infinite;
+}
+
+
+/* .title svg {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    font-size: xx-large;
+    top: 50%;
+    right: 50%;
+    overflow: hidden;
+    border: 1px solid green;
+    animation: title_move linear 2s;
+    animation-duration: 1s;
+} */
+
+.container {
+    border: 1px solid white;
+    width: fit-content;
+    border-radius: 10px;
+    box-shadow: 0 30px 20px 0 rgb(141, 216, 241);
+}
+
+.gears {}
+
+.gears svg {
+    width: 100px;
+    height: 100px;
+    /* border: 1px solid red; */
+    animation: example linear 2s infinite;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    /* animation-direction: alternate; */
+}
+
+.gear_two svg {
+    width: 100px;
+    height: 100px;
+    animation: example linear 2s infinite;
+    animation-duration: 3s;
+    animation-direction: reverse;
+}
+
+.gear_three svg {
+    width: 300px;
+    height: 300px;
+    animation: example linear 2s infinite;
+    animation-duration: 6s;
+    /* animation-direction: reverse; */
+}
+
+@keyframes example {
+    from {
+        fill: rgb(84, 164, 190);
+        /* width: 100px;
+        height: 100px; */
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        fill: rgb(92, 196, 223);
+        /* width: 120px;
+        height: 120px; */
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes title_move {
+    from {
+        fill: rgb(155, 170, 174);
+        /* width: 100px;
+    height: 100px; */
+        /* -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); */
+    }
+    to {
+        fill: rgb(16, 194, 239);
+        transform: translate(50%, 0);
+        /* width: 120px;
+    height: 120px; */
+        /* -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); */
+    }
+}
+
+@keyframes matrix {
+    from {}
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes matrix2 {
+    from {}
+    to {
+        transform: translateY(100vh);
+    }
+}
