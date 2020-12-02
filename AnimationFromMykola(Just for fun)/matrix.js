@@ -37,6 +37,20 @@ function runMatrix() {
 
         document.getElementById(id).style.animation = "matrix2 linear " + sec + "s " + "infinite";
     }
+    for (var i = 1; i < 150; i++) {
+
+        var node = document.createElement("SPAN");
+        var sec = Math.floor(Math.random() * 10) + 6;
+        var symb = arr[Math.floor(Math.random() * 20)];
+        var id = "f" + i;
+        node.id = id;
+        node.innerHTML = symb;
+        document.getElementById('symbols5').appendChild(node);
+        document.getElementById(id).style.color = "green";
+
+        document.getElementById(id).style.animation = "matrix2 linear " + sec + "s " + "infinite";
+        document.getElementById(id).style.animationDirection = "reverse";
+    }
     for (var i = 1; i < 0; i++) {
 
         var node = document.createElement("SPAN");

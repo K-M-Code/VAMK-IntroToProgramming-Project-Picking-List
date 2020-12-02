@@ -48,8 +48,14 @@ body {
 }
 
 #symbols4 {
-    position: relative;
+    position: absolute;
     text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#symbols5 {
+    position: absolute;
     display: flex;
     justify-content: space-evenly;
 }
