@@ -90,10 +90,10 @@ body {
 } */
 
 .container {
-    border: 1px solid white;
+    /* border: 1px solid white; */
     width: fit-content;
-    border-radius: 10px;
-    box-shadow: 0 30px 20px 0 rgb(141, 216, 241);
+    border-radius: 15px;
+    box-shadow: 1px 8px 10px 6px rgb(141, 216, 241);
 }
 
 .gears {}
