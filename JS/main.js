@@ -366,7 +366,7 @@ function generateTable(productList) {
     tbody.appendChild(tableHeader);
 
     for (k = 0; k < productList.length; k++) {
-        var newRow2 = document.createElement("tr");
+        var newRow = document.createElement("tr");
         var newCol6 = document.createElement("td");
         newCol6.innerHTML = productList[k].code;
         var newCol7 = document.createElement("td");
@@ -377,13 +377,17 @@ function generateTable(productList) {
         newCol9.innerHTML = productList[k].unit_price;
         var newCol10 = document.createElement("td");
         newCol10.innerHTML = productList[k].shelf_pos;
-        newRow2.appendChild(newCol6);
-        newRow2.appendChild(newCol7);
-        newRow2.appendChild(newCol8);
-        newRow2.appendChild(newCol9);
-        newRow2.appendChild(newCol10);
+        newRow.appendChild(newCol6);
+        newRow.appendChild(newCol7);
+        newRow.appendChild(newCol8);
+        newRow.appendChild(newCol9);
+        newRow.appendChild(newCol10);
         var tbody = table.getElementsByTagName("tbody")[0];
-        tbody.appendChild(newRow2);
+        newRow.setAttribute("id", productList[k].code);
+        newRow.addEventListener("click", function (e) {
+            document.location.href = "productdetails.html?code=" + e.currentTarget.id;
+        });
+        tbody.appendChild(newRow);
     }
 }
 
@@ -412,7 +416,7 @@ function filterProducts() {
                 }
             }
 
-            var  filteredBySupplier= [];
+            var filteredBySupplier = [];
             for (j = 0; j < filteredById.length; j++) {
                 if (filteredById[j].suppliercode.includes(supplierIdValue)) {
                     filteredBySupplier.push(filteredById[j]);
@@ -427,4 +431,22 @@ function filterProducts() {
 
             generateTable(filteredByShelfPosition);
         })
+}
+//* Product detail page */
+function loadProduct() {
+    var productCode = decodeURI(document.location.search.replace("?code=", ""));
+
+    fetch("/project.json")
+        .then(res => res.json())
+        .then(orders => {
+            var uniqueProducts = getUniqueProductsFromJson(orders);
+            var product = uniqueProducts.filter(p => p.code === productCode)[0];
+            
+            document.getElementById("code").innerHTML = product.code;
+            document.getElementById("name").innerHTML = product.product;
+            document.getElementById("description").innerHTML = product.description;
+            document.getElementById("supplier").innerHTML = product.suppliercode;
+            document.getElementById("unit-price").innerHTML = product.unit_price;
+            document.getElementById("shelf-position").innerHTML = product.shelf_pos;
+        });
 }

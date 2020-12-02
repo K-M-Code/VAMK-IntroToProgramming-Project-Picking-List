@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products details</title>
     <link rel="stylesheet" href="/CSS/style.css">
+    <script src="/JS/main.js"></script>
 </head>
 
-<body>
-    <div class="content-1">
-        Product description
+<body onload="loadProduct()">
+    <div id="main-content">
+        <p><b>Code</b>: <span id="code"></span></p>
+        <p><b>Product Name</b>: <span id="name"></span></p>
+        <p><b>Description</b>: <span id="description"></span></p>
+        <p><b>Supplier Code</b>: <span id="supplier"></span></p>
+        <p><b>Unit Price</b>: <span id="unit-price"></span></p>
+        <p><b>Shelf position</b>: <span id="shelf-position"></span></p>
     </div>
 </body>
 
