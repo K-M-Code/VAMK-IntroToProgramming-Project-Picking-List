@@ -18,15 +18,14 @@
         <p class="titles center"> Product Search</p>
         <ul>
             <li>
-                <input type="text" name="productid" id="product-id" placeholder="Product ID..">
+                <input onkeyup="filterProducts()" type="text" name="productid" id="product-id" placeholder="Product ID..">
             </li>
             <li>
-                <input type="text" name="supplierid" id="supplier-id" placeholder="Supplier ID..">
+                <input onkeyup="filterProducts()" type="text" name="supplierid" id="supplier-id" placeholder="Supplier ID..">
             </li>
             <li>
-                <input type="text" name="shelfposition" id="shelf-position" placeholder="Shelf Position..">
+                <input onkeyup="filterProducts()" type="text" name="shelfposition" id="shelf-position" placeholder="Shelf Position..">
             </li>
-            <li><button onclick="filterProducts()">Search</button></li>
         </ul>
     </div>
 
