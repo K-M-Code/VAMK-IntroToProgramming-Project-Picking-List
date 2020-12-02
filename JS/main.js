@@ -11,7 +11,7 @@ function fetchOrder(arg) {
         .then(res => res.json())
         .then(data => {
             if (arg == 'main') {
-                console.log(typeof(data));
+                console.log(typeof (data));
                 printMainTableOrdersFilters(data);
             } else if (arg == 'details') {
                 var id = localStorage.getItem("orderid");
@@ -360,7 +360,7 @@ function getUniqueProductsFromJson(orders) {
 function generateTable(productList) {
     var table = document.getElementById("product-list");
     var tableHeader = table.children[0].children[0];
-    
+
     var tbody = table.children[0];
     tbody.innerHTML = "";
     tbody.appendChild(tableHeader);
@@ -402,13 +402,29 @@ function filterProducts() {
         .then(orders => {
             var uniqueProducts = getUniqueProductsFromJson(orders);
             var productIdValue = document.getElementById("product-id").value;
+            var supplierIdValue = document.getElementById("supplier-id").value;
+            var shelfPositionValue = document.getElementById("shelf-position").value;
 
-            var filteredProducts =[];
-            for(i=0; i< uniqueProducts.length; i++){
-                if(uniqueProducts[i].code.includes(productIdValue)){
-                    filteredProducts.push(uniqueProducts[i]);
+            var filteredById = [];
+            for (i = 0; i < uniqueProducts.length; i++) {
+                if (uniqueProducts[i].code.includes(productIdValue)) {
+                    filteredById.push(uniqueProducts[i]);
                 }
             }
-            generateTable(filteredProducts);
+
+            var  filteredBySupplier= [];
+            for (j = 0; j < filteredById.length; j++) {
+                if (filteredById[j].suppliercode.includes(supplierIdValue)) {
+                    filteredBySupplier.push(filteredById[j]);
+                }
+            }
+            var filteredByShelfPosition = [];
+            for (k = 0; k < filteredBySupplier.length; k++) {
+                if (filteredBySupplier[k].shelf_pos.includes(shelfPositionValue)) {
+                    filteredByShelfPosition.push(filteredBySupplier[k]);
+                }
+            }
+
+            generateTable(filteredByShelfPosition);
         })
 }
