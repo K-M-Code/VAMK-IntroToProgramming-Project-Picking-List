@@ -22,9 +22,12 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <!-- Matrix start -->
+    <script src="/JS/main.js"></script>
+
 </head>
 
-<body>
+<body onload="loadProducts()">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -80,20 +83,20 @@
             <div class="row">
 
                 <div class="col-sm-12 col-md-3 pt-sm-3 pt-2">
-                    <input type="text" name="" id="" placeholder="Product ID">
+                    <input type="text" name="productid" id="product-id" placeholder="Product ID" onkeyup="filterProducts()">
                 </div>
 
                 <div class="col-sm-12 col-md-3 pt-sm-3 pt-2">
-                    <input type="text" name="" id="" placeholder="Supplier ID">
+                    <input type="text" name="supplierid" id="supplier-id" placeholder="Supplier ID" onkeyup="filterProducts()">
                 </div>
 
                 <div class="col-sm-12 col-md-3 pt-sm-3 pt-2">
-                    <input type="text" name="" id="" placeholder="Shelf Position">
+                    <input type="text" name="shelfposition" id="shelf-position" placeholder="Shelf Position" onkeyup="filterProducts()">
                 </div>
 
-                <div class="col-sm-12 col-md-3 pt-sm-5 pt-md-2">
+                <!-- <div class="col-sm-12 col-md-3 pt-sm-5 pt-md-2">
                     <button class="btn btn-info btn-block tealColor tealShadow" type="submit">Search</button>
-                </div>
+                </div> -->
 
             </div>
 
@@ -102,7 +105,7 @@
                 <div class="card my-4">
                     <div class="card-body">
                         <!--Table-->
-                        <table class="table table-hover">
+                        <table class="table table-hover" id="product-list">
                             <!--Table head-->
                             <thead class="tealColor">
                                 <tr class="text-white">
@@ -116,7 +119,7 @@
                             <!--Table head-->
                             <!--Table body-->
                             <tbody>
-                                <tr>
+                                <!-- <tr>
                                     <th>AC100/E17</th>
                                     <td>E17</td>
                                     <td>Npt Stainless Steel Connector External Thread Barb Hose Nozzle Hose Measurement: 3/8 Inch X 15Mm</td>
@@ -157,7 +160,7 @@
                                     <td>Npt Stainless Steel Connector External Thread Barb Hose Nozzle Hose Measurement: 3/8 Inch X 15Mm</td>
                                     <td>2.03</td>
                                     <td>A5.23</td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                             <!--Table body-->
                         </table>
