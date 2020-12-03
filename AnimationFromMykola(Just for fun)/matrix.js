@@ -65,3 +65,25 @@ function runMatrix() {
         document.getElementById(id).style.animation = "matrix2 linear " + sec + "s " + "infinite";
     }
 }
+
+function linkFunction() {
+    document.location.href = "http://www.cc.puv.fi/~e2000594/";
+}
+
+function changeRotation() {
+    // var dirOne = document.getElementById('two').style;
+    // var direction = dirOne.getPropertyValue('animationDirection');
+    // console.log(direction);
+    document.getElementById('one').style.animationDirection = "reverse";
+    document.getElementById('two').style.animationDirection = "normal";
+    document.getElementById('three').style.animationDirection = "reverse";
+}
+
+function changeRotationBack() {
+    // var dirOne = document.getElementById('two').style;
+    // var direction = dirOne.getPropertyValue('animationDirection');
+    // console.log(direction);
+    document.getElementById('one').style.animationDirection = "normal";
+    document.getElementById('two').style.animationDirection = "reverse";
+    document.getElementById('three').style.animationDirection = "normal";
+}
