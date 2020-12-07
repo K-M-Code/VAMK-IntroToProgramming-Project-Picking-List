@@ -185,19 +185,19 @@ function login() {
     var users = [{
         name: "John Doe",
         password: "matrix",
-        role: "Wherehouse junior manager"
+        role: "Wherehouse Junior Manager"
     }, {
         name: "Agent Smith",
         password: "kill neo",
-        role: "Havy duty"
+        role: "Heavy Duty Lift Technician"
     }, {
         name: "Agent Brown",
         password: "kill neo very hard",
-        role: "Coffe maker"
+        role: "Coffee Maker"
     }, {
         name: "Agent Jones",
         password: "want another job",
-        role: "Light duty"
+        role: "Light Duty Lift Technician"
     }];
 
     var input = document.getElementsByTagName('input');
