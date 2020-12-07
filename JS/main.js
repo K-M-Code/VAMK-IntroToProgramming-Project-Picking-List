@@ -405,27 +405,30 @@ function filterProducts() {
         .then(res => res.json())
         .then(orders => {
             var uniqueProducts = getUniqueProductsFromJson(orders);
-            var productIdValue = document.getElementById("product-id").value;
-            var supplierIdValue = document.getElementById("supplier-id").value;
-            var shelfPositionValue = document.getElementById("shelf-position").value;
+            var productIdValue = document.getElementById("product-id").value.toUpperCase();
+            var supplierIdValue = document.getElementById("supplier-id").value.toUpperCase();
+            var shelfPositionValue = document.getElementById("shelf-position").value.toUpperCase();
 
             var filteredById = [];
             for (i = 0; i < uniqueProducts.length; i++) {
-                if (uniqueProducts[i].code.includes(productIdValue)) {
-                    filteredById.push(uniqueProducts[i]);
+                const p = uniqueProducts[i];
+                if (p.code.toUpperCase().includes(productIdValue)) {
+                    filteredById.push(p);
                 }
             }
 
             var filteredBySupplier = [];
             for (j = 0; j < filteredById.length; j++) {
-                if (filteredById[j].suppliercode.includes(supplierIdValue)) {
-                    filteredBySupplier.push(filteredById[j]);
+                const p = filteredById[j];
+                if (p.suppliercode.toUpperCase().includes(supplierIdValue)) {
+                    filteredBySupplier.push(p);
                 }
             }
             var filteredByShelfPosition = [];
             for (k = 0; k < filteredBySupplier.length; k++) {
-                if (filteredBySupplier[k].shelf_pos.includes(shelfPositionValue)) {
-                    filteredByShelfPosition.push(filteredBySupplier[k]);
+                const p = filteredById[k];
+                if (p.shelf_pos.toUpperCase().includes(shelfPositionValue)) {
+                    filteredByShelfPosition.push(p);
                 }
             }
 
