@@ -1,5 +1,5 @@
 function runMatrix() {
-    var arr = ["@", "!", "^", "&", "*", "#", "+", "π", "ƒ", "œ", "å", "~", "µ", "∂", "s", "[]", "M", "||", "K", "M", "N"];
+    var arr = ["恵", "!", "^", "&", "脳", "#", "剣", "π", "学", "œ", "å", "~", "µ", "∂", "s", "[]", "M", "||", "K", "M", "N"];
     for (var i = 4; i < 180; i++) {
         var node = document.createElement("SPAN");
         var sec = Math.floor(Math.random() * 10) + 4;
