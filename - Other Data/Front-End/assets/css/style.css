@@ -171,6 +171,33 @@ input[type="text-area"] {
     border: 1px solid #F57F17;
 }
 
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #printThisPart, #printThisPart * {
+        visibility: visible;
+    }
+    #printThisPart {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    #doNotPrint, #doNotPrint * {
+        visibility: hidden;
+    }
+}
+
+.printIcon {
+    cursor: pointer;
+    width: 100px;
+    opacity: 65%;
+}
+
+.printIcon:hover {
+    opacity: 85%;
+}
+
 /* PRODUCT DETAILS PAGES */
 #productDetailsBox img {
     width: 100%;
@@ -190,3 +217,4 @@ input[type="text-area"] {
     background-color: #0CBFAE;
     font-weight: bold;
 }
+
