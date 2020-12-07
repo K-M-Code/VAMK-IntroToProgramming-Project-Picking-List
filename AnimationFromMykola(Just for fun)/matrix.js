@@ -1,5 +1,5 @@
 function runMatrix() {
-    var arr = ["@", "!", "^", "&", "*", "#", "+", "π", "ƒ", "œ", "å", "~", "µ", "∂", "s", "[]", "M", "||", "K", "M", "N"];
+    var arr = ["恵", "!", "^", "&", "脳", "#", "剣", "π", "学", "œ", "å", "~", "µ", "∂", "s", "[]", "M", "||", "K", "M", "N"];
     for (var i = 4; i < 180; i++) {
         var node = document.createElement("SPAN");
         var sec = Math.floor(Math.random() * 10) + 4;
@@ -64,4 +64,26 @@ function runMatrix() {
 
         document.getElementById(id).style.animation = "matrix2 linear " + sec + "s " + "infinite";
     }
+}
+
+function linkFunction() {
+    document.location.href = "http://www.cc.puv.fi/~e2000594/";
+}
+
+function changeRotation() {
+    // var dirOne = document.getElementById('two').style;
+    // var direction = dirOne.getPropertyValue('animationDirection');
+    // console.log(direction);
+    document.getElementById('one').style.animationDirection = "reverse";
+    document.getElementById('two').style.animationDirection = "normal";
+    document.getElementById('three').style.animationDirection = "reverse";
+}
+
+function changeRotationBack() {
+    // var dirOne = document.getElementById('two').style;
+    // var direction = dirOne.getPropertyValue('animationDirection');
+    // console.log(direction);
+    document.getElementById('one').style.animationDirection = "normal";
+    document.getElementById('two').style.animationDirection = "reverse";
+    document.getElementById('three').style.animationDirection = "normal";
 }

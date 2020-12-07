@@ -11,7 +11,7 @@ function fetchOrder(arg) {
         .then(res => res.json())
         .then(data => {
             if (arg == 'main') {
-                console.log(typeof (data));
+                console.log(typeof(data));
                 printMainTableOrdersFilters(data);
             } else if (arg == 'details') {
                 var id = localStorage.getItem("orderid");
@@ -185,19 +185,19 @@ function login() {
     var users = [{
         name: "John Doe",
         password: "matrix",
-        role: "Wherehouse junior manager"
+        role: "Wherehouse Junior Manager"
     }, {
         name: "Agent Smith",
         password: "kill neo",
-        role: "Havy duty"
+        role: "Heavy Duty Lift Technician"
     }, {
         name: "Agent Brown",
         password: "kill neo very hard",
-        role: "Coffe maker"
+        role: "Coffee Maker"
     }, {
         name: "Agent Jones",
         password: "want another job",
-        role: "Light duty"
+        role: "Light Duty Lift Technician"
     }];
 
     var input = document.getElementsByTagName('input');
@@ -323,7 +323,7 @@ function buttonReady() {
         sessionStorage.setItem(id, "READY");
 
     } else {
-        alert("NOT READY");
+        alert("Please check all items to change order status to READY");
         // document.getElementById("show_status").innerHTML = "NOT READY";
         // sessionStorage.setItem(id, "NOT READY");
     }
@@ -334,6 +334,10 @@ function buttonReady() {
     console.log("Status for " + arr[i] + ": " + sessionStorage.getItem(arr[i]));
 
 }
+
+
+
+
 
 //** Product-list page */
 function getUniqueProductsFromJson(orders) {
@@ -347,7 +351,8 @@ function getUniqueProductsFromJson(orders) {
         var isExist = false;
         for (k = 0; k < result.length; k++) {
             if (sumArr[j].code == result[k].code) {
-                isExist = true; break;
+                isExist = true;
+                break;
             }
         }
         if (isExist == false) {
@@ -359,12 +364,17 @@ function getUniqueProductsFromJson(orders) {
 
 function generateTable(productList) {
     var table = document.getElementById("product-list");
-    var tableHeader = table.children[0].children[0];
+    var tableHeader = table.children[0];
 
-    var tbody = table.children[0];
+    var tbody = table.children[1];
+    console.log(tbody);
+    // refactoring from Mykola
     tbody.innerHTML = "";
-    tbody.appendChild(tableHeader);
-
+    table.innerHTML = "";
+    table.appendChild(tableHeader);
+    table.appendChild(tbody);
+    //---------------------------
+    console.log(table);
     for (k = 0; k < productList.length; k++) {
         var newRow = document.createElement("tr");
         var newCol6 = document.createElement("td");
@@ -384,7 +394,7 @@ function generateTable(productList) {
         newRow.appendChild(newCol10);
         var tbody = table.getElementsByTagName("tbody")[0];
         newRow.setAttribute("id", productList[k].code);
-        newRow.addEventListener("click", function (e) {
+        newRow.addEventListener("click", function(e) {
             document.location.href = "productdetails.html?code=" + e.currentTarget.id;
         });
         tbody.appendChild(newRow);
@@ -443,8 +453,9 @@ function loadProduct() {
         .then(res => res.json())
         .then(orders => {
             var uniqueProducts = getUniqueProductsFromJson(orders);
+            console.log(uniqueProducts);
             var product = uniqueProducts.filter(p => p.code === productCode)[0];
-            
+            console.log(product);
             document.getElementById("code").innerHTML = product.code;
             document.getElementById("name").innerHTML = product.product;
             document.getElementById("description").innerHTML = product.description;

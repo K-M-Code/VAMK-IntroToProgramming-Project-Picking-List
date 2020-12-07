@@ -38,6 +38,11 @@
 }
 
 
+/* Table Hover */
+.table td {
+    cursor: pointer;
+}
+
 /* ELEMENT EFFECTS */
 
 #loginBox button {
@@ -166,12 +171,50 @@ input[type="text-area"] {
     border: 1px solid #F57F17;
 }
 
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #printThisPart, #printThisPart * {
+        visibility: visible;
+    }
+    #printThisPart {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    #doNotPrint, #doNotPrint * {
+        visibility: hidden;
+    }
+}
+
+.printIcon {
+    cursor: pointer;
+    width: 100px;
+    opacity: 65%;
+}
+
+.printIcon:hover {
+    opacity: 85%;
+}
+
 /* PRODUCT DETAILS PAGES */
 #productDetailsBox img {
     width: 100%;
 }
 
+
 /* LANDING PAGES */
 #landingBox img {
     height: 65%;
 }
+
+
+/* SUPPORT PAGES */
+
+.accordion-button:not(.collapsed) {
+    color: #000 !important;
+    background-color: #0CBFAE;
+    font-weight: bold;
+}
+
