@@ -436,7 +436,7 @@ function filterProducts() {
             }
             var filteredByShelfPosition = [];
             for (k = 0; k < filteredBySupplier.length; k++) {
-                const p = filteredById[k];
+                const p = filteredBySupplier[k];
                 if (p.shelf_pos.toUpperCase().includes(shelfPositionValue)) {
                     filteredByShelfPosition.push(p);
                 }
