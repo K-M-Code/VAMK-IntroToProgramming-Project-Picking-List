@@ -323,7 +323,7 @@ function buttonReady() {
         sessionStorage.setItem(id, "READY");
 
     } else {
-        alert("NOT READY");
+        alert("Please check all items to change order status to READY");
         // document.getElementById("show_status").innerHTML = "NOT READY";
         // sessionStorage.setItem(id, "NOT READY");
     }

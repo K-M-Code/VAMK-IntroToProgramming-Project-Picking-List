@@ -38,6 +38,11 @@
 }
 
 
+/* Table Hover */
+.table td {
+    cursor: pointer;
+}
+
 /* ELEMENT EFFECTS */
 
 #loginBox button {
@@ -170,6 +175,7 @@ input[type="text-area"] {
 #productDetailsBox img {
     width: 100%;
 }
+
 
 /* LANDING PAGES */
 #landingBox img {
