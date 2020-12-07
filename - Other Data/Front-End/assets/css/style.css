@@ -181,3 +181,12 @@ input[type="text-area"] {
 #landingBox img {
     height: 65%;
 }
+
+
+/* SUPPORT PAGES */
+
+.accordion-button:not(.collapsed) {
+    color: #000 !important;
+    background-color: #0CBFAE;
+    font-weight: bold;
+}
