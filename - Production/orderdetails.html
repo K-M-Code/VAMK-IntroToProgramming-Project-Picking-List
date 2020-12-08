@@ -31,7 +31,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="landing.html">
                 <img src="assets/images/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy"> The Matrix
             </a>
 
@@ -80,63 +80,63 @@
 
             <div id="printThisPart">
 
-            <img src="assets/images/logo.svg" width="150" height="150" class="" id="printThisPart2">
+                <img src="assets/images/logo.svg" width="150" height="150" class="" id="printThisPart2">
 
-            <div class="row">
-                <div class="col-auto mr-auto pt-sm-5 pt-md-2">
-                    <h3>Order Details</h3>
+                <div class="row">
+                    <div class="col-auto mr-auto pt-sm-5 pt-md-2">
+                        <h3>Order Details</h3>
+                    </div>
+
+                    <div class="col-auto pt-sm-5 pt-md-2" id="doNotPrint">
+                        <button class="btn btn-info btn-block tealShadow tealColor" type="submit" onclick="buttonReady()">Order Ready</button>
+
+                        <img class="printIcon pl-5" src="assets/images/printIcon.png" onClick="window.print()">
+
+                    </div>
+
                 </div>
 
-                <div class="col-auto pt-sm-5 pt-md-2" id="doNotPrint">
-                    <button class="btn btn-info btn-block tealShadow tealColor" type="submit" onclick="buttonReady()">Order Ready</button>
+                <div class="row py-4">
+                    <div class="d-flex flex-row pb-3">
+                        <span class="highlight pr-5">Order ID: <span class="content" id="orderid">515</span></span>
+                        <span class="highlight pr-5">Customer ID: <span class="content" id="customerid">1234</span></span>
+                        <span class="highlight pr-5">Customer Name: <span class="content" id="customer">Durlock S.A.</span></span>
+                    </div>
+                    <div class="d-flex flex-row pb-3">
+                        <span class="highlight pr-5">Invoice Address: <span class="content" id="invaddr">Av. Corrientes 327, 3rd Floor,Buenos Aires - C1043AAD,ARGENTINA</span></span>
+                    </div>
+                    <div class="d-flex flex-row pb-3">
+                        <span class="highlight pr-5">Delivery Address: <span class="content" id="delivaddr">Av. Corrientes 327, 3rd Floor,Buenos Aires - C1043AAD,ARGENTINA</span></span>
+                    </div>
+                    <div class="d-flex flex-row pb-3">
+                        <span class="highlight pr-5">Delivery Date: <span class="content" id="deliverydate">6-10-2020</span></span>
+                        <span class="highlight pr-5">Responsible Sales Person: <span class="content" id="respsalesperson">Kim Berner</span></span>
+                        <span class="highlight pr-5">Total Price: <span class="content" id="totalprice">371.82</span></span>
+                    </div>
+                    <div class="d-flex flex-row pb-3">
+                        <span class="highlight pr-5">Customer Comments: "<span class="content" id="comment">please send as soon as possible</span>"</span>
+                    </div>
+                    <div class="d-flex flex-row pb-3">
+                        <span class="highlight pr-5">Packing Comments: <span class="content" id="packing_comment"></span></span>
+                    </div>
+                    <div class="d-flex flex-row pb-3">
+                        <span class="highlight pr-5">Status: <span class="content" id="show_status"></span></span>
+                    </div>
 
-                    <img class="printIcon pl-5" src="assets/images/printIcon.png" onClick="window.print()">
+                    <div class="d-flex flex-row">
+                        <input type="text-area" placeholder="Add Packing Comments" class="highlight pr-5" id="coment_area">
+                    </div>
 
-                </div>
-
-            </div>
-
-            <div class="row py-4">
-                <div class="d-flex flex-row pb-3">
-                    <span class="highlight pr-5">Order ID: <span class="content" id="orderid">515</span></span>
-                    <span class="highlight pr-5">Customer ID: <span class="content" id="customerid">1234</span></span>
-                    <span class="highlight pr-5">Customer Name: <span class="content" id="customer">Durlock S.A.</span></span>
-                </div>
-                <div class="d-flex flex-row pb-3">
-                    <span class="highlight pr-5">Invoice Address: <span class="content" id="invaddr">Av. Corrientes 327, 3rd Floor,Buenos Aires - C1043AAD,ARGENTINA</span></span>
-                </div>
-                <div class="d-flex flex-row pb-3">
-                    <span class="highlight pr-5">Delivery Address: <span class="content" id="delivaddr">Av. Corrientes 327, 3rd Floor,Buenos Aires - C1043AAD,ARGENTINA</span></span>
-                </div>
-                <div class="d-flex flex-row pb-3">
-                    <span class="highlight pr-5">Delivery Date: <span class="content" id="deliverydate">6-10-2020</span></span>
-                    <span class="highlight pr-5">Responsible Sales Person: <span class="content" id="respsalesperson">Kim Berner</span></span>
-                    <span class="highlight pr-5">Total Price: <span class="content" id="totalprice">371.82</span></span>
-                </div>
-                <div class="d-flex flex-row pb-3">
-                    <span class="highlight pr-5">Customer Comments: "<span class="content" id="comment">please send as soon as possible</span>"</span>
-                </div>
-                <div class="d-flex flex-row pb-3">
-                    <span class="highlight pr-5">Packing Comments: <span class="content" id="packing_comment"></span></span>
-                </div>
-                <div class="d-flex flex-row pb-3">
-                    <span class="highlight pr-5">Status: <span class="content" id="show_status"></span></span>
                 </div>
 
-                <div class="d-flex flex-row">
-                    <input type="text-area" placeholder="Add Packing Comments" class="highlight pr-5" id="coment_area">
-                </div>
+                <div class="row">
 
-            </div>
-
-            <div class="row">
-
-                <div class="card my-4">
-                    <div class="card-body">
-                        <!--Table-->
-                        <table class="table table-hover" id="details_table">
-                            <!--Table head-->
-                            <!-- <thead class="tealColor">
+                    <div class="card my-4">
+                        <div class="card-body">
+                            <!--Table-->
+                            <table class="table table-hover" id="details_table">
+                                <!--Table head-->
+                                <!-- <thead class="tealColor">
                                 <tr class="text-white">
                                     <th>Packed</th>
                                     <th>Code</th>
@@ -148,9 +148,9 @@
                                     <th>Shelf Position</th>
                                 </tr>
                             </thead> -->
-                            <!--Table head-->
-                            <!--Table body-->
-                            <!-- <tbody>
+                                <!--Table head-->
+                                <!--Table body-->
+                                <!-- <tbody>
                                 <tr>
                                     <th><input type="checkbox" name="" id=""></th>
                                     <td>AC100/E17</td>
@@ -212,14 +212,14 @@
                                     <td>A5.23</td>
                                 </tr>
                             </tbody> -->
-                            <!--Table body-->
-                        </table>
-                        <!--Table-->
+                                <!--Table body-->
+                            </table>
+                            <!--Table-->
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
 
 
         </section>
