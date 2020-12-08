@@ -178,6 +178,9 @@ input[type="text-area"] {
     #printThisPart, #printThisPart * {
         visibility: visible;
     }
+    #printThisPart2, #printThisPart2 * {
+        visibility: visible;
+    }
     #printThisPart {
         position: absolute;
         left: 0;
@@ -185,6 +188,12 @@ input[type="text-area"] {
     }
     #doNotPrint, #doNotPrint * {
         visibility: hidden;
+    }
+}
+
+@media only screen{
+    #printThisPart2, #printThisPart2 * {
+        display: none;
     }
 }
 

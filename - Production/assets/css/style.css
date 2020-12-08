@@ -1,0 +1,229 @@
+/* PRIMARY EFFECTS */
+/* Primary Color */
+.tealColor {
+    background-color: #0CBFAE;
+}
+
+/* Secondary Color */
+.orangeColor {
+    background-color: #F57F17;
+}
+
+/* Font Primary Color */
+.tealFont {
+    color: #0CBFAE;
+}
+
+/* Font Secondary Color */
+.orangeFont {
+    color: #F57F17;
+}
+
+/* Shadow Primary */
+.tealShadow {
+    -webkit-box-shadow: 0px 1px 20px 0px rgba(4,195,255,0.5);
+    -moz-box-shadow: 0px 1px 20px 0px rgba(4,195,255,0.5);
+    box-shadow: 0px 1px 20px 0px rgba(4,195,255,0.5);
+}
+
+/* Shadow Secondary */
+.orangeShadow {
+    -webkit-box-shadow: 0px 1px 20px 0px rgba(245,127,23,0.5);
+    -moz-box-shadow: 0px 1px 20px 0px rgba(245,127,23,0.5);
+    box-shadow: 0px 1px 20px 0px rgba(245,127,23,0.5);
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+
+/* Table Hover */
+.table td {
+    cursor: pointer;
+}
+
+/* ELEMENT EFFECTS */
+
+#loginBox button {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px !important;
+}
+
+#loginBox button:hover {
+    background-color: rgba(9, 190, 173,0.75) !important;
+}
+
+#productsBox button {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px !important;
+}
+
+#productsBox button:hover {
+    background-color: rgba(9, 190, 173,0.75) !important;
+}
+
+#ordersBox button {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px !important;
+}
+
+#ordersBox button:hover {
+    background-color: rgba(9, 190, 173,0.75) !important;
+}
+
+#ordersDetailsBox button {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px !important;
+}
+
+#ordersDetailsBox button:hover {
+    background-color: rgba(9, 190, 173,0.75) !important;
+}
+
+#productDetailsBox button {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px !important;
+}
+
+#productDetailsBox button:hover {
+    background-color: rgba(9, 190, 173,0.75) !important;
+}
+
+#landingBox button {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px !important;
+}
+
+#landingBox button:hover {
+    background-color: rgba(9, 190, 173,0.75) !important;
+}
+
+
+
+
+/* SECTION EFFECTS */
+/* Navbar Styling */
+.navbar {
+    -webkit-box-shadow: 0px 1px 20px 0px rgba(4,195,255,0.3);
+    -moz-box-shadow: 0px 1px 20px 0px rgba(4,195,255,0.3);
+    box-shadow: 0px 1px 20px 0px rgba(4,195,255,0.3);
+}
+
+.navbar-nav li a {
+    color: #2e2e2e !important;
+}
+
+.navbar-nav li .active{
+    color: #0CBFAE !important;
+}
+
+.navbar-brand img{
+    padding-right: 5px;
+}
+
+.navbar a img{
+    width: 55px;
+}
+
+/* TABLE DESIGN */
+tbody, td, tfoot, th, thead, tr {
+    text-align: center;
+}
+
+/* INPUT DESIGN */
+input:focus {
+    outline: none;
+}
+
+input[type="text"] {
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    border: 0;
+    padding: 7px 0; 
+    border-bottom: 1px solid #F57F17;
+}
+
+/* ORDER DETAILS PAGES */
+/* Emphasize Text */
+.highlight {
+    font-weight: bold;
+}
+
+.content {
+    font-weight: normal;
+}
+
+input[type="text-area"] {
+    width: 100%;
+    height: 50px;
+    height: 50px;
+    text-align: center;
+    font-weight: normal;
+    border: 1px solid #F57F17;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #printThisPart, #printThisPart * {
+        visibility: visible;
+    }
+    #printThisPart2, #printThisPart2 * {
+        visibility: visible;
+    }
+    #printThisPart {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    #doNotPrint, #doNotPrint * {
+        visibility: hidden;
+    }
+}
+
+@media only screen{
+    #printThisPart2, #printThisPart2 * {
+        display: none;
+    }
+}
+
+.printIcon {
+    cursor: pointer;
+    width: 100px;
+    opacity: 65%;
+}
+
+.printIcon:hover {
+    opacity: 85%;
+}
+
+/* PRODUCT DETAILS PAGES */
+#productDetailsBox img {
+    width: 100%;
+}
+
+
+/* LANDING PAGES */
+#landingBox img {
+    height: 65%;
+}
+
+
+/* SUPPORT PAGES */
+
+.accordion-button:not(.collapsed) {
+    color: #000 !important;
+    background-color: #0CBFAE;
+    font-weight: bold;
+}
+
