@@ -6,7 +6,7 @@
  * arg = status: creates database at sessionStorage for product ID using formula (packed+i+_+ordrid) and status for each order ID using ORDER ID: NOT READY
  */
 function fetchOrder(arg) {
-    var urlJson = "/project.json";
+    var urlJson = "assets/js/project.json";
     fetch(urlJson)
         .then(res => res.json())
         .then(data => {
@@ -402,7 +402,7 @@ function generateTable(productList) {
 }
 
 function loadProducts() {
-    fetch("/project.json")
+    fetch("assets/js/project.json")
         .then(res => res.json())
         .then(orders => {
             var uniqueProducts = getUniqueProductsFromJson(orders);
@@ -411,7 +411,7 @@ function loadProducts() {
 }
 
 function filterProducts() {
-    fetch("/project.json")
+    fetch("assets/js/project.json")
         .then(res => res.json())
         .then(orders => {
             var uniqueProducts = getUniqueProductsFromJson(orders);
@@ -449,7 +449,7 @@ function filterProducts() {
 function loadProduct() {
     var productCode = decodeURI(document.location.search.replace("?code=", ""));
 
-    fetch("/project.json")
+    fetch("assets/js/project.json")
         .then(res => res.json())
         .then(orders => {
             var uniqueProducts = getUniqueProductsFromJson(orders);
